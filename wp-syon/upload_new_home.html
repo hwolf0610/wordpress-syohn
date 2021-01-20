@@ -1,0 +1,100 @@
+<style>
+    textarea {
+        box-shadow: 2px, green;
+        border-radius: inherit;
+        box-sizing: border-box;
+        size: 5px;
+        border-bottom-width: 5px;
+        border-width: 5px;
+        background: #133c55;
+        color: white;
+        height: 70px;
+    }
+
+    h1,
+    h2 {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        font-family: 'eicons';
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+        display: flex;
+        font-family: 'eicons';
+    }
+</style>
+
+<textarea></textarea>
+<div class="second-radio">
+    <input type="radio" id="check_own_kind1" name="check_own_kind" value="Homeowner" onclick="Homeowner_chk()" checked>
+    <label for="check_own_kind1">Homeowner</label>
+</div>
+<div class="second-radio">
+    <input type="radio" id="check_own_kind2" name="check_own_kind" value="Investor" onclick="Investor_chk()">
+    <label for="check_own_kind2">Investor</label>
+</div>
+<div class="second-radio">
+    <input type="radio" id="check_own_kind3" name="check_own_kind" value="Builder" onclick="Builder_chk()">
+    <label for="check_own_kind3">Builder</label>
+</div>
+<div class="second-radio">
+    <input type="radio" id="check_own_kind4" name="check_own_kind" value="Broker" onclick="Broker_Agents_chk()">
+    <label for="check_own_kind4">Broker/Agent </label>
+</div>
+<!-- <div class="second-radio">
+    <input type="radio" id="check_own_kind5" name="check_own_kind" value="Agent" onclick="Agent_chk()">
+    <label for="check_own_kind5"></label>
+</div> -->
+<div style="display: flex;justify-content: flex-end;margin-top: 30px;">
+    <button style="border-radius: 15px;background:#133c55;color: white;width: 65px;height: 30px;"
+        onclick="go_to_new_page()">Next</button>
+</div>
+
+<script>
+    var real_link = "https://syohn.com/input-home-information/"
+    var real_link_kind = "Homeowner"
+
+    function Homeowner_chk() {
+        var checkBox = document.getElementById("check_own_kind1");
+        if (checkBox.checked == true) {
+            real_link = "https://syohn.com/signup-homeowner/";
+            real_link_kind = "Homeowner";
+        }
+    }
+    function Investor_chk() {
+        var checkBox = document.getElementById("check_own_kind2");
+        if (checkBox.checked == true) {
+            real_link = "https://syohn.com/signup-investor/"
+            real_link_kind = "Investor";
+        }
+    }
+    function Builder_chk() {
+        var checkBox = document.getElementById("check_own_kind3");
+        if (checkBox.checked == true) {
+            real_link = "https://syohn.com/signup-builder-representative/"
+            real_link_kind = "Builder";
+        }
+    }
+    function Broker_Agents_chk() {
+        var checkBox = document.getElementById("check_own_kind4");
+        if (checkBox.checked == true) {
+            real_link = "https://syohn.com/signup-agents/"
+            real_link_kind = "Broker";
+        }
+    }
+    // function Agent_chk() {
+    //     var checkBox = document.getElementById("check_own_kind5");
+    //     if (checkBox.checked == true) {
+    //         real_link = "https://syohn.com/signup-agents/"
+    //         real_link_kind = "Agent";
+    //     }
+    // }
+    function go_to_new_page() {
+        localStorage.setItem("real_link_kind", real_link_kind)
+        window.location.href = "https://syohn.com/input-home-information/";
+    }
+</script>

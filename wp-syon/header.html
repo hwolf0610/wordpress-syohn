@@ -1,0 +1,24 @@
+<style> 
+    h1 {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            font-family: 'eicons';
+        } 
+</style>
+
+<div>
+    <h1 id="page_header">
+        <!-- Broker/Agent   -->
+     </h1>
+</div> 
+
+<script>
+    if(localStorage.getItem("real_link_kind") == "Broker"){
+        document.getElementById('page_header').innerHTML=localStorage.getItem("real_link_kind") +"/Agents";
+    }
+    else{
+        document.getElementById('page_header').innerHTML=localStorage.getItem("real_link_kind");
+    }
+    console.log("window.real_link_kind:", localStorage.getItem("real_link_kind"))
+</script>

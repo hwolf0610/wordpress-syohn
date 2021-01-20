@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: 'https://syohn.com/wp-json/home_retail/get_data_from_database_information', // my php file
+            type: 'GET', // type of the HTTP request
+            success: function (result) {
+                //   var obj = jQuery.parseJSON(result);
+                console.log(result);
+                result.map((item, index) => {
+                    var Image_src = "https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_EXTERIOR_LANDSCAPING;
+                    // var Image_src = "https://ap.rdcpix.com/84955d2ca5211a01abd411c3358a12c7l-m2871947500od-w480_h360.jpg";
+                    document.getElementById("home_discover_container").innerHTML += "<a href='https://syohn.com/home-information-detail?home_id=" + item.home_id + "'><div class='home-discover-container-style'><img class='home-discover-image'  src='" + Image_src + "'><div class='home-description'><p class='home-address'>" + item.property_address_country_select + "</p><p class='home-address'>" + item.property_address_city1 + "</p></div></div></a>";
+                })
+            }
+        });
+
+
+
+
+
+        function go_detail_page() {
+            var form = document.getElementById("form-id");
+            form.submit();
+        }
+        // Total_Array = Address_Array.concat(Photo_Array);
+        // console.log("Total_Array:", Total_Array);
+
+    </script>
+    <style>
+        .home-description {
+            width: 50%;
+        }
+
+        .home-address {
+            margin-left: 25px;
+            font-size: 25px;
+            font-family: fantasy;
+            color: black;
+        }
+
+        .home-discover-image {
+            border-radius: 20px !important;
+            height: 100%;
+            width: 50%;
+        }
+
+        .home-discover-container-style {
+            display: flex;
+            margin: 10px;
+            height: 250px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .home-discover-container-style:hover {
+            box-shadow: gray 5px !important;
+            border-bottom-color: black;
+            border: 1px;
+            border-style: outset;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <!-- <form action="https://syohn.com/home-information-detail" id="form-id" method="get" > -->
+        <div id="home_discover_container"></div>
+        <!-- </form> -->
+    </div>
+</body>
+
+</html>

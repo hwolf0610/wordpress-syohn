@@ -1,0 +1,171 @@
+<style>
+    textarea {
+        box-shadow: 2px, green;
+        border-radius: inherit;
+        box-sizing: border-box;
+        size: 5px;
+        border-bottom-width: 5px;
+        border-width: 5px;
+        background: #133c55;
+        color: white;
+        height: 70px;
+    }
+
+    h1,
+    h2 {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        font-family: 'eicons';
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+        display: flex;
+        font-family: 'eicons';
+    }
+</style>
+
+<div>
+    <h1 id="page_header">
+        <!-- Broker/Agent   -->
+     </h1>
+    <textarea></textarea>
+    <input type="text" placeholder="First Name " style="background: rgb(241, 241, 120);color: black;width: 100%;" />
+    <input type="text" placeholder="Last Name " style="background: rgb(241, 241, 120);color: black;width: 100%;" />
+    <input type="text" placeholder="Phone " style="background: rgb(241, 241, 120);color: black;width: 100%;" />
+    <input type="text" placeholder="Email " style="background: rgb(241, 241, 120);color: black;width: 100%;" />
+</div>
+
+<div>
+    <h3>Co-Listing Agent</h3>
+    <textarea></textarea>
+    <input type="text" placeholder="Type in Co-Listing Agents Real Estate Agency name"    style="background: rgb(241, 241, 120);color: black;width: 100%;" />
+</div>
+
+<div>
+    <h3>Broker</h3>
+    <textarea></textarea>
+    <select>
+        <option value="yes" selected>Broker 1</option>
+        <option value="no" >Broker 2</option>
+    </select>
+    <input type="text"  style="background: rgb(241, 241, 120);color: black;width: 100%;" />
+
+</div>
+
+
+
+<div>
+    <h3><b>Listing Date</b></h3>
+    <textarea></textarea>
+    <div class="second-radio">
+        <select>
+            <option value="yes">Agency 1</option>
+            <option value="no" selected>Agency 2</option>
+        </select>
+    </div>
+</div>
+
+<div>
+    <h3><b>Selling Agent & Co-Listing Agent Commission</b></h3>
+    <textarea></textarea>
+    <input type="text" placeholder="Selling Agent Type in number"
+        style="background: rgb(241, 241, 120);color: black;width: 100%;" />
+    <h4>Percentage</h4>
+    <select>
+        <option value="yes">0.5%</option>
+        <option value="yes">1%</option>
+        <option value="yes">1.5%</option>
+        <option value="yes">2%</option>
+        <option value="yes">2.5%</option>
+        <option value="yes">3%</option>
+        <option value="yes">3.5%</option>
+        <option value="yes">4%</option>
+        <option value="yes">4.5%</option>
+        <option value="yes">5%</option>
+        <option value="yes">5.5%</option>
+        <option value="yes">6%</option>
+    </select>
+    <input type="text" placeholder="Co-Listing Agent  Type in number"
+        style="background: rgb(241, 241, 120);color: black;width: 100%;" />
+    <h4>Percentage</h4>
+    <select>
+        <option value="yes">0.5%</option>
+        <option value="yes">1%</option>
+        <option value="yes">1.5%</option>
+        <option value="yes">2%</option>
+        <option value="yes">2.5%</option>
+        <option value="yes">3%</option>
+        <option value="yes">3.5%</option>
+        <option value="yes">4%</option>
+        <option value="yes">4.5%</option>
+        <option value="yes">5%</option>
+        <option value="yes">5.5%</option>
+        <option value="yes">6%</option>
+    </select>
+
+</div>
+
+<div>
+    <h3><b>Buying Agent Commission</b></h3>
+    <textarea></textarea>
+    <input type="text" placeholder="Type in number" style="background: rgb(241, 241, 120);color: black;width: 100%;" />
+    <h4>Percentage</h4>
+    <select>
+        <option value="yes">0.5%</option>
+        <option value="yes">1%</option>
+        <option value="yes">1.5%</option>
+        <option value="yes">2%</option>
+        <option value="yes">2.5%</option>
+        <option value="yes">3%</option>
+        <option value="yes">3.5%</option>
+        <option value="yes">4%</option>
+        <option value="yes">4.5%</option>
+        <option value="yes">5%</option>
+        <option value="yes">5.5%</option>
+        <option value="yes">6%</option>
+    </select>
+</div>
+
+<div>
+    <h3><b>Sellers Agreement Type</b></h3>
+    <textarea></textarea>
+    <div class="second-radio">
+        <select>
+            <option value="yes">Exclusive Right To Sell</option>
+            <option value="no" selected>Exclusive Agency</option>
+            <option value="no" selected>Open Listing Agreement</option>
+            <option value="no" selected>Net Listing Agreement</option>
+        </select>
+    </div>
+</div>
+
+<div>
+    <h3><b>Prospect Exempt</b></h3>
+    <textarea></textarea>
+    <div class="second-radio">
+        <select>
+            <option value="yes">Yes</option>
+            <option value="no" selected>No</option>
+        </select>
+    </div>
+</div>
+
+<div>
+    <h3><b>Agreement Services</b></h3>
+    <textarea></textarea>
+    <div class="second-radio">
+        <select>
+            <option value="yes">Full Service</option>
+            <option value="no" selected>Limited Service</option>
+        </select>
+    </div>
+</div>
+
+<script>
+    document.getElementById('page_header').innerHTML=localStorage.getItem("real_link_kind")
+    console.log("window.real_link_kind:", localStorage.getItem("real_link_kind"))
+</script>

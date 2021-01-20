@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: 'https://syohn.com/wp-json/home_retail/get_data_from_database_information', // my php file
+            type: 'GET', // type of the HTTP request
+            success: function (result) {
+                //   var obj = jQuery.parseJSON(result);
+                console.log(result);
+                var url_string = window.location.href
+                var url = new URL(url_string);
+                var home_id = url.searchParams.get("home_id");
+                console.log(home_id);
+                result.map((item, index) => {
+                    if (item.home_id == home_id) {
+                        var Image_src = "https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_EXTERIOR_LANDSCAPING;
+                        document.getElementById('home_discover_image').src = Image_src;
+                        document.getElementById("home_discover_container_information").innerHTML += "<div class='text_style'>" + JSON.stringify(item) + "</div>";
+                    }
+                })
+            }
+        });
+    </script>
+    <style>
+        .text-style {
+            display: flex;
+            margin: 10px;
+            padding: 10px;
+            justify-content: end;
+        }
+
+        .home-description {
+            width: 50%;
+        }
+
+        .home-address {
+            margin-left: 25px;
+            font-size: 25px;
+            font-family: fantasy;
+            color: black;
+        }
+
+        .home-discover-image {
+            border-radius: 20px !important;
+            height: 100%;
+            width: 50%;
+        }
+
+        .home-discover-container-style {
+            display: flex;
+            margin: 10px;
+            height: 250px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .home-discover-container-style:hover {
+            box-shadow: gray 5px !important;
+            border-bottom-color: black;
+            border: 1px;
+            border-style: outset;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0
+        }
+
+        .mySlides {
+            display: none
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        .discover-image{
+            width: 100%;
+            height: 500px;
+            border-radius: 30px !important;
+            border: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h2>Photo</h2>
+            <img id="home_discover_image" class="discover-image">
+            <div id="home_discover_container_photo"></div>
+        </div>
+        <div>
+            <h2>Property Information</h2>
+            <div id="home_discover_container_information"></div>
+        </div>
+
+        <div>
+            <h2>Property Type</h2>
+            <div id="home_discover_container_type"></div>
+        </div>
+
+        <div>
+            <h2>Property Address</h2>
+            <div id="home_discover_container_address"></div>
+        </div>
+
+        <div>
+            <h2>Property Description</h2>
+            <div id="home_discover_container_description"></div>
+        </div>
+
+        <div>
+            <h2>Show Instruction</h2>
+            <div id="home_discover_container_instruction"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>
