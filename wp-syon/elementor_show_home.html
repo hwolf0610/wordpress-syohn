@@ -11,9 +11,11 @@
                 //   var obj = jQuery.parseJSON(result);
                 console.log(result);
                 result.map((item, index) => {
+                    var unit_symbol = item.property_address_UNIT1 ? "#" + item.property_address_UNIT1 : "";
+
                     var Image_src = "https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_EXTERIOR_LANDSCAPING;
                     // var Image_src = "https://ap.rdcpix.com/84955d2ca5211a01abd411c3358a12c7l-m2871947500od-w480_h360.jpg";
-                    document.getElementById("home_discover_container").innerHTML += "<a href='https://syohn.com/home-information-detail?home_id=" + item.home_id + "'><div class='home-discover-container-style'><img class='home-discover-image'  src='" + Image_src + "'><div class='home-description'><p class='home-address'>" + item.property_address_country_select + "</p><p class='home-address'>" + item.property_address_city1 + "</p></div></div></a>";
+                    document.getElementById("home_discover_container").innerHTML += "<a href='https://syohn.com/home-information-detail?home_id=" + item.home_id + "'><div class='home-discover-container-style'><img class='home-discover-image'  src='" + Image_src + "'><div class='home-description'><p class='home-address'>" + item.property_address_street_address1 + ", " + unit_symbol + "</p><p class='home-address'>" + item.property_address_state1 + ", " + item.property_address_zip_code1 + "</p><p class='home-address'>" + item.property_address_country_select + "</p></div></div></a>";
                 })
             }
         });
@@ -37,25 +39,27 @@
 
         .home-address {
             margin-left: 25px;
-            font-size: 25px;
-            font-family: fantasy;
+            font-size: 20px;
             color: black;
+            margin-bottom: -25px;
         }
 
         .home-discover-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             border-radius: 20px !important;
-            height: 100%;
+            height: 250px !important;
             width: 50%;
         }
 
+
         .home-discover-container-style {
             display: flex;
-            margin: 10px;
-            height: 250px;
             margin-top: 20px;
             margin-bottom: 10px;
             cursor: pointer;
-            padding: 20px;
+            padding: 15px;
             width: 100%;
         }
 
@@ -64,6 +68,23 @@
             border-bottom-color: black;
             border: 1px;
             border-style: outset;
+        }
+
+        @media(max-width: 600px) {
+            .home-discover-container-style {
+                display: block !important;
+                width: 125%;
+                margin-left: -35px;
+                padding: 3px;
+            }
+
+            .home-discover-image {
+                width: 100%;
+            }
+
+            .home-address {
+                font-size: 18px;
+            }
         }
     </style>
 </head>

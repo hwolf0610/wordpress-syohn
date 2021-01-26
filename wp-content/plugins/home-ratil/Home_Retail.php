@@ -57,6 +57,8 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_broker` (
 		`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`broker_agent_first_name` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`broker_agent_last_name` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`broker_agent_phone` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -85,6 +87,16 @@ function crudOperationsTable() {
   $table_name_home_retail_information = $wpdb->prefix . '_home_retail_information';
   $sql = "CREATE TABLE `$table_name_home_retail_information` (
 		`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`information_checkbox_41` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`information_select_5` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`information_select_5_textarea3` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`desc_broker_owner_textarea` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`Description_select_FAMILY_ROOM_length_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`other_sec_description_check_312_other` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`other_sec_description_ZONE_Low_risk_z_other` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`information_checkbox_11` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`information_checkbox_12` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`information_checkbox_13` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -135,6 +147,9 @@ function crudOperationsTable() {
   $table_name_home_retail_type = $wpdb->prefix . '_home_retail_type';
   $sql = "CREATE TABLE `$table_name_home_retail_type` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Type_checkbox_11` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Type_checkbox_1_textarea` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_11` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -185,6 +200,9 @@ function crudOperationsTable() {
   $table_name_home_retail_address = $wpdb->prefix . '_home_retail_address';
   $sql = "CREATE TABLE `$table_name_home_retail_address` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `property_address_street_address1` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_118` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `property_address_UNIT1` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -252,6 +270,9 @@ function crudOperationsTable() {
   $table_name_home_retail_description_1 = $wpdb->prefix . '_home_retail_description_1';
   $sql = "CREATE TABLE `$table_name_home_retail_description_1` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Description_select_2` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Description_select_21` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Description_select_22` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -307,6 +328,9 @@ function crudOperationsTable() {
   $table_name_home_retail_description_2 = $wpdb->prefix . '_home_retail_description_2';
   $sql = "CREATE TABLE `$table_name_home_retail_description_2` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Description_select_MUDROOM_Width_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_143_001_5` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Description_select_OFFICE_Length_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -366,6 +390,9 @@ function crudOperationsTable() {
   $table_name_home_retail_description_3 = $wpdb->prefix . '_home_retail_description_3';
   $sql = "CREATE TABLE `$table_name_home_retail_description_3` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Description_select_BEDROOM_3_Width_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_143_001_m_3` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Description_select_CLOSET_3_Length_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -425,6 +452,9 @@ function crudOperationsTable() {
   $table_name_home_retail_description_4 = $wpdb->prefix . '_home_retail_description_4';
   $sql = "CREATE TABLE `$table_name_home_retail_description_4` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Description_select_4_checkbox12322123` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Description_select_4_checkbox12323123` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Description_select_4_checkbox123218123` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -484,6 +514,9 @@ function crudOperationsTable() {
   $table_name_home_retail_description_5 = $wpdb->prefix . '_home_retail_description_5';
   $sql = "CREATE TABLE `$table_name_home_retail_description_5` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `other_sec_description_check_224` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `other_sec_description_check_225` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `other_sec_description_check_226` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -543,6 +576,9 @@ function crudOperationsTable() {
   $table_name_home_retail_description_6 = $wpdb->prefix . '_home_retail_description_6';
   $sql = "CREATE TABLE `$table_name_home_retail_description_6` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `other_sec_description_SQUARE_FOOTAGE_SEPARATE` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_170` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `other_sec_description_check_4` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -602,6 +638,9 @@ function crudOperationsTable() {
   $table_name_home_retail_description_7 = $wpdb->prefix . '_home_retail_description_7';
   $sql = "CREATE TABLE `$table_name_home_retail_description_7` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `other_sec_description_check_91` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `other_sec_description_check_92` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `other_sec_description_check_93` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -661,6 +700,9 @@ function crudOperationsTable() {
   $table_name_home_retail_description_8 = $wpdb->prefix . '_home_retail_description_8';
   $sql = "CREATE TABLE `$table_name_home_retail_description_8` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `next_other_check_33_textarea` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_186` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_4` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -720,6 +762,9 @@ function crudOperationsTable() {
   $table_name_home_retail_description_9 = $wpdb->prefix . '_home_retail_description_9';
   $sql = "CREATE TABLE `$table_name_home_retail_description_9` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `next_other_check_610` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_611` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_612` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -779,6 +824,9 @@ function crudOperationsTable() {
   $table_name_home_retail_description_10 = $wpdb->prefix . '_home_retail_description_10';
   $sql = "CREATE TABLE `$table_name_home_retail_description_10` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `next_other_check_83` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_84` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_85` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -838,6 +886,9 @@ function crudOperationsTable() {
   $table_name_home_retail_description_11 = $wpdb->prefix . '_home_retail_description_11';
   $sql = "CREATE TABLE `$table_name_home_retail_description_11` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `next_2_other_check_11` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_2_other_check_12` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_2_other_check_13` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -892,6 +943,9 @@ function crudOperationsTable() {
   $table_name_home_retail_instruction = $wpdb->prefix . '_home_retail_instruction';
   $sql = "CREATE TABLE `$table_name_home_retail_instruction` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Instructions_checkbox_11` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Instructions_checkbox_12` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Instructions_checkbox_13` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -936,6 +990,9 @@ function crudOperationsTable() {
   $table_name_home_retail_photo_upload = $wpdb->prefix . '_home_retail_photo_upload';
   $sql = "CREATE TABLE `$table_name_home_retail_photo_upload` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `pdf_document_upload` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `file_upload_EXTERIOR_LANDSCAPING` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `file_upload_EXTERIOR_HOUSE` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -1148,6 +1205,14 @@ require_once(ROOTDIR . 'file_uploader_tester.php');
     $table_name_home_retail_description_9 = $wpdb->prefix . '_home_retail_description_9';
     $table_name_home_retail_description_10 = $wpdb->prefix . '_home_retail_description_10';
     $table_name_home_retail_description_11 = $wpdb->prefix . '_home_retail_description_11';
+
+    $rows_test = $wpdb->get_results("SELECT * FROM $table_name_home_retail_address ORDER BY home_id ASC");
+    foreach ($rows_test as $row ){
+      echo "<div>$row->property_address_street_address1</div>";
+    }
+
+
+
     $rows = $wpdb->get_results("SELECT * FROM $table_name_home_retail_information LEFT JOIN $table_name_home_retail_type ON $table_name_home_retail_information.home_id = $table_name_home_retail_type.home_id LEFT JOIN $table_name_home_retail_address ON $table_name_home_retail_address.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_instruction ON $table_name_home_retail_instruction.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_photo_upload ON $table_name_home_retail_photo_upload.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_description_1 ON $table_name_home_retail_description_1.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_description_2 ON $table_name_home_retail_description_2.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_description_3 ON $table_name_home_retail_description_3.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_description_4 ON $table_name_home_retail_description_4.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_description_5 ON $table_name_home_retail_description_5.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_description_6 ON $table_name_home_retail_description_6.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_description_7 ON $table_name_home_retail_description_7.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_description_8 ON $table_name_home_retail_description_8.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_description_9 ON $table_name_home_retail_description_9.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_description_10 ON $table_name_home_retail_description_10.home_id = $table_name_home_retail_information.home_id  LEFT JOIN $table_name_home_retail_description_11 ON $table_name_home_retail_description_11.home_id = $table_name_home_retail_information.home_id LEFT JOIN $table_name_home_retail_broker ON $table_name_home_retail_broker.home_id = $table_name_home_retail_information.home_id   ORDER BY $table_name_home_retail_information.home_id ASC");
     
     // $table_name_home_retail_address = $wpdb->prefix . '_home_retail_address';

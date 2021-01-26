@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
+        let CountryJson = { "BD": "Bangladesh", "BE": "Belgium", "BF": "Burkina Faso", "BG": "Bulgaria", "BA": "Bosnia and Herzegovina", "BB": "Barbados", "WF": "Wallis and Futuna", "BL": "Saint Barthelemy", "BM": "Bermuda", "BN": "Brunei", "BO": "Bolivia", "BH": "Bahrain", "BI": "Burundi", "BJ": "Benin", "BT": "Bhutan", "JM": "Jamaica", "BV": "Bouvet Island", "BW": "Botswana", "WS": "Samoa", "BQ": "Bonaire, Saint Eustatius and Saba ", "BR": "Brazil", "BS": "Bahamas", "JE": "Jersey", "BY": "Belarus", "BZ": "Belize", "RU": "Russia", "RW": "Rwanda", "RS": "Serbia", "TL": "East Timor", "RE": "Reunion", "TM": "Turkmenistan", "TJ": "Tajikistan", "RO": "Romania", "TK": "Tokelau", "GW": "Guinea-Bissau", "GU": "Guam", "GT": "Guatemala", "GS": "South Georgia and the South Sandwich Islands", "GR": "Greece", "GQ": "Equatorial Guinea", "GP": "Guadeloupe", "JP": "Japan", "GY": "Guyana", "GG": "Guernsey", "GF": "French Guiana", "GE": "Georgia", "GD": "Grenada", "GB": "United Kingdom", "GA": "Gabon", "SV": "El Salvador", "GN": "Guinea", "GM": "Gambia", "GL": "Greenland", "GI": "Gibraltar", "GH": "Ghana", "OM": "Oman", "TN": "Tunisia", "JO": "Jordan", "HR": "Croatia", "HT": "Haiti", "HU": "Hungary", "HK": "Hong Kong", "HN": "Honduras", "HM": "Heard Island and McDonald Islands", "VE": "Venezuela", "PR": "Puerto Rico", "PS": "Palestinian Territory", "PW": "Palau", "PT": "Portugal", "SJ": "Svalbard and Jan Mayen", "PY": "Paraguay", "IQ": "Iraq", "PA": "Panama", "PF": "French Polynesia", "PG": "Papua New Guinea", "PE": "Peru", "PK": "Pakistan", "PH": "Philippines", "PN": "Pitcairn", "PL": "Poland", "PM": "Saint Pierre and Miquelon", "ZM": "Zambia", "EH": "Western Sahara", "EE": "Estonia", "EG": "Egypt", "ZA": "South Africa", "EC": "Ecuador", "IT": "Italy", "VN": "Vietnam", "SB": "Solomon Islands", "ET": "Ethiopia", "SO": "Somalia", "ZW": "Zimbabwe", "SA": "Saudi Arabia", "ES": "Spain", "ER": "Eritrea", "ME": "Montenegro", "MD": "Moldova", "MG": "Madagascar", "MF": "Saint Martin", "MA": "Morocco", "MC": "Monaco", "UZ": "Uzbekistan", "MM": "Myanmar", "ML": "Mali", "MO": "Macao", "MN": "Mongolia", "MH": "Marshall Islands", "MK": "Macedonia", "MU": "Mauritius", "MT": "Malta", "MW": "Malawi", "MV": "Maldives", "MQ": "Martinique", "MP": "Northern Mariana Islands", "MS": "Montserrat", "MR": "Mauritania", "IM": "Isle of Man", "UG": "Uganda", "TZ": "Tanzania", "MY": "Malaysia", "MX": "Mexico", "IL": "Israel", "FR": "France", "IO": "British Indian Ocean Territory", "SH": "Saint Helena", "FI": "Finland", "FJ": "Fiji", "FK": "Falkland Islands", "FM": "Micronesia", "FO": "Faroe Islands", "NI": "Nicaragua", "NL": "Netherlands", "NO": "Norway", "NA": "Namibia", "VU": "Vanuatu", "NC": "New Caledonia", "NE": "Niger", "NF": "Norfolk Island", "NG": "Nigeria", "NZ": "New Zealand", "NP": "Nepal", "NR": "Nauru", "NU": "Niue", "CK": "Cook Islands", "XK": "Kosovo", "CI": "Ivory Coast", "CH": "Switzerland", "CO": "Colombia", "CN": "China", "CM": "Cameroon", "CL": "Chile", "CC": "Cocos Islands", "CA": "Canada", "CG": "Republic of the Congo", "CF": "Central African Republic", "CD": "Democratic Republic of the Congo", "CZ": "Czech Republic", "CY": "Cyprus", "CX": "Christmas Island", "CR": "Costa Rica", "CW": "Curacao", "CV": "Cape Verde", "CU": "Cuba", "SZ": "Swaziland", "SY": "Syria", "SX": "Sint Maarten", "KG": "Kyrgyzstan", "KE": "Kenya", "SS": "South Sudan", "SR": "Suriname", "KI": "Kiribati", "KH": "Cambodia", "KN": "Saint Kitts and Nevis", "KM": "Comoros", "ST": "Sao Tome and Principe", "SK": "Slovakia", "KR": "South Korea", "SI": "Slovenia", "KP": "North Korea", "KW": "Kuwait", "SN": "Senegal", "SM": "San Marino", "SL": "Sierra Leone", "SC": "Seychelles", "KZ": "Kazakhstan", "KY": "Cayman Islands", "SG": "Singapore", "SE": "Sweden", "SD": "Sudan", "DO": "Dominican Republic", "DM": "Dominica", "DJ": "Djibouti", "DK": "Denmark", "VG": "British Virgin Islands", "DE": "Germany", "YE": "Yemen", "DZ": "Algeria", "US": "United States", "UY": "Uruguay", "YT": "Mayotte", "UM": "United States Minor Outlying Islands", "LB": "Lebanon", "LC": "Saint Lucia", "LA": "Laos", "TV": "Tuvalu", "TW": "Taiwan", "TT": "Trinidad and Tobago", "TR": "Turkey", "LK": "Sri Lanka", "LI": "Liechtenstein", "LV": "Latvia", "TO": "Tonga", "LT": "Lithuania", "LU": "Luxembourg", "LR": "Liberia", "LS": "Lesotho", "TH": "Thailand", "TF": "French Southern Territories", "TG": "Togo", "TD": "Chad", "TC": "Turks and Caicos Islands", "LY": "Libya", "VA": "Vatican", "VC": "Saint Vincent and the Grenadines", "AE": "United Arab Emirates", "AD": "Andorra", "AG": "Antigua and Barbuda", "AF": "Afghanistan", "AI": "Anguilla", "VI": "U.S. Virgin Islands", "IS": "Iceland", "IR": "Iran", "AM": "Armenia", "AL": "Albania", "AO": "Angola", "AQ": "Antarctica", "AS": "American Samoa", "AR": "Argentina", "AU": "Australia", "AT": "Austria", "AW": "Aruba", "IN": "India", "AX": "Aland Islands", "AZ": "Azerbaijan", "IE": "Ireland", "ID": "Indonesia", "UA": "Ukraine", "QA": "Qatar", "MZ": "Mozambique" };
+        const propertyValues = Object.values(CountryJson);
+        // console.log(propertyValues);
+        // propertyValues.map((data, index) => {
+        //     // console.log("country:", data);
+        //     $("#Address_select_1").append(new Option(data, data));
+        // })
+
+
         let Total_Array = []
         $.ajax({
             url: 'https://syohn.com/wp-json/home_retail/get_data_from_database_instruction_blue_box', // my php file
@@ -18,7 +27,7 @@
                     document.getElementById("Broker_Broker").innerHTML = item.Broker_Broker;
                     document.getElementById("Broker_Listing_Date").innerHTML = item.Broker_Listing_Date;
                     document.getElementById("Broker_Selling_Commission").innerHTML = item.Broker_Selling_Commission;
-                    document.getElementById("Broker_Buying_Agent_Commission").innerHTML = item.Broker_Buying_Agent_Commission;
+                    // document.getElementById("Broker_Buying_Agent_Commission").innerHTML = item.Broker_Buying_Agent_Commission;
                     document.getElementById("Broker_Sellers_Agreement_Type").innerHTML = item.Broker_Sellers_Agreement_Type;
                     document.getElementById("Broker_Prospect_Exempt").innerHTML = item.Broker_Prospect_Exempt;
                     document.getElementById("Broker_Agreement_Services").innerHTML = item.Broker_Agreement_Services;
@@ -98,6 +107,18 @@
                     document.getElementById("Description_FEDERAL_FLOOD_INSURANCE_AVAILBLE").innerHTML = item.Description_FEDERAL_FLOOD_INSURANCE_AVAILBLE;
                     document.getElementById("Description_PROPERTY_LOCATION").innerHTML = item.Description_PROPERTY_LOCATION;
                     document.getElementById("Description_FLOOD_ZONE_TYPE").innerHTML = item.Description_FLOOD_ZONE_TYPE;
+                    document.getElementById("Description_ZONE_A").innerHTML = item.Description_ZONE_A;
+                    document.getElementById("Description_ZONE_AE_A1_30").innerHTML = item.Description_ZONE_AE_A1_30;
+                    document.getElementById("Description_ZONE_AH").innerHTML = item.Description_ZONE_AH;
+                    document.getElementById("Description_ZONE_AO").innerHTML = item.Description_ZONE_AO;
+                    document.getElementById("Description_ZONE_AR").innerHTML = item.Description_ZONE_AR;
+                    document.getElementById("Description_ZONE_A99").innerHTML = item.Description_ZONE_A99;
+                    document.getElementById("Description_ZONE_V").innerHTML = item.Description_ZONE_V;
+                    document.getElementById("Description_ZONE_VE_V1_30").innerHTML = item.Description_ZONE_VE_V1_30;
+                    document.getElementById("Description_Zone_X_Shaded").innerHTML = item.Description_Zone_X_Shaded;
+                    // document.getElementById("Description_Moderate_risk_zones").innerHTML = item.Description_Moderate_risk_zones;
+                    document.getElementById("Description_Zone_X_Unshaded").innerHTML = item.Description_Zone_X_Unshaded;
+                    // document.getElementById("Description_Low_risk_zones").innerHTML = item.Description_Low_risk_zones;
                     document.getElementById("Description_SQUARE_FOOTAGE_HEATED").innerHTML = item.Description_SQUARE_FOOTAGE_HEATED;
                     document.getElementById("Description_SQUARE_FOOTAGE_SEPARATE").innerHTML = item.Description_SQUARE_FOOTAGE_SEPARATE;
                     document.getElementById("Description_PROPERTY_LEVELS").innerHTML = item.Description_PROPERTY_LEVELS;
@@ -135,10 +156,11 @@
                     document.getElementById("listin_SELLER_OPT_OUT").innerHTML = item.listin_SELLER_OPT_OUT;
                     document.getElementById("listin_SELLER_OPT_IN").innerHTML = item.listin_SELLER_OPT_IN;
                     document.getElementById("listin_OUTSIDE_DISTRIBUTION").innerHTML = item.listin_OUTSIDE_DISTRIBUTION;
+                    document.getElementById("Instruction_SUBMIT_BUTTON").innerHTML = item.Instruction_SUBMIT_BUTTON;
 
-                    document.getElementById("Photo_EXTERIOR").innerHTML = item.Photo_EXTERIOR;
-                    document.getElementById("Photo_INTERIOR").innerHTML = item.Photo_INTERIOR;
-                    document.getElementById("Document_PDF_s").innerHTML = item.Document_PDF_s;
+                    // document.getElementById("Photo_EXTERIOR").innerHTML = item.Photo_EXTERIOR;
+                    // document.getElementById("Photo_INTERIOR").innerHTML = item.Photo_INTERIOR;
+                    // document.getElementById("Document_PDF_s").innerHTML = item.Document_PDF_s;
                 })
             }
         });
@@ -283,6 +305,40 @@
             margin-right: 10px;
             margin-left: 30px;
         }
+
+        /* do not group these rules */
+        *::-webkit-input-placeholder {
+            color: black;
+        }
+
+        *:-moz-placeholder {
+            /* FF 4-18 */
+            color: black;
+            opacity: 1;
+        }
+
+        *::-moz-placeholder {
+            /* FF 19+ */
+            color: black;
+            opacity: 1;
+        }
+
+        *:-ms-input-placeholder {
+            /* IE 10+ */
+            color: black;
+        }
+
+        *::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: black;
+        }
+
+        *::placeholder {
+            /* modern browser */
+            color: black;
+        }
+
+         
     </style>
 </head>
 
@@ -304,6 +360,9 @@
     <form action="https://syohn.com/wp-json/home_retail/add/formdata" method="post" enctype='multipart/form-data'
         id="nameform">
         <input type="hidden" id="home_seller_kind" name="home_seller_kind">
+        <input type="hidden" id="home_retail_regex_id" name="home_retail_regex_id">
+        <input type="hidden" id="home_retail_user_information" name="home_retail_user_information">
+
         <!-- Tab 1 -->
         <div id="broker_agent" class="tabcontent" style="padding: 25px;">
             <div>
@@ -346,25 +405,27 @@
                 <h3><b>Listing Date</b></h3>
                 <textarea id="Broker_Listing_Date" disabled></textarea>
                 <div class="second-radio">
-                    <select name="broker_agent_listing_date">
-                        <option value="Agency 1" selected>Agency 1</option>
+                    <input type="date" name="broker_agent_listing_date" class="form-control" id="datePicker" />
+                    <!-- <select name="broker_agent_listing_date">
+                        <option value="Agency 1" selected>1/21/2021</option>
                         <option value="Agency 2">Agency 2</option>
                         <option value="Agency 3">Agency 3</option>
                         <option value="Agency 4">Agency 4</option>
                         <option value="Agency 5">Agency 5</option>
                         <option value="Agency 6">Agency 6</option>
-                    </select>
+                    </select> -->
                 </div>
             </div>
 
             <div>
                 <h3><b>Selling Agent & Co-Listing Agent Commission</b></h3>
                 <textarea id="Broker_Selling_Commission" disabled></textarea>
-                <input type="text" placeholder="Selling Agent Type in number" name="broker_agent_selling_commission"
-                    style="background: rgb(241, 241, 120);color: black;width: 100%;" />
-                <h4>Percentage</h4>
+                <!-- <input type="text" placeholder="Selling Agent Type in number" name="broker_agent_selling_commission"
+                    style="background: rgb(241, 241, 120);color: black;width: 100%;" /> -->
+                <h4>Listing Agent Percentage</h4>
                 <select name="broker_agent_selling_commission_percentage">
-                    <option value="0.5%" selected>0.5%</option>
+                    <option value="0.5%" selected>0%</option>
+                    <option value="0.5%" >0.5%</option>
                     <option value="1%">1%</option>
                     <option value="1.5%">1.5%</option>
                     <option value="2%">2%</option>
@@ -377,11 +438,12 @@
                     <option value="5.5%">5.5%</option>
                     <option value="6%">6%</option>
                 </select>
-                <input type="text" placeholder="Co-Listing Agent  Type in number" name="broker_agent_type_in_number"
-                    style="background: rgb(241, 241, 120);color: black;width: 100%;" />
-                <h4>Percentage</h4>
+                <!-- <input type="text" placeholder="Co-Listing Agent  Type in number" name="broker_agent_type_in_number"
+                    style="background: rgb(241, 241, 120);color: black;width: 100%;" /> -->
+                <h4>Co-Listing Agent Percentage</h4>
                 <select name="broker_agent_type_in_number_percentage">
-                    <option value="0.5%" selected>0.5%</option>
+                    <option value="0.5%" selected>0%</option>
+                    <option value="0.5%" >0.5%</option>
                     <option value="1%">1%</option>
                     <option value="1.5%">1.5%</option>
                     <option value="2%">2%</option>
@@ -396,7 +458,7 @@
                 </select>
             </div>
 
-            <div>
+            <!-- <div>
                 <h3><b>Buying Agent Commission</b></h3>
                 <textarea id="Broker_Buying_Agent_Commission" disabled></textarea>
                 <input type="text" placeholder="Type in number" name="broker_agent_buying_agent_commision"
@@ -416,7 +478,7 @@
                     <option value="5.5%">5.5%</option>
                     <option value="6%">6%</option>
                 </select>
-            </div>
+            </div> -->
 
             <div>
                 <h3><b>Sellers Agreement Type</b></h3>
@@ -560,7 +622,8 @@
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" />
                 <h4>Percentage</h4>
                 <select name="information_Buying_Agent_Commi_des_sct">
-                    <option value="0.5%" selected>0.5%</option>
+                    <option value="0.5%" selected>0%</option>
+                    <option value="0.5%" >0.5%</option>
                     <option value="1%">1%</option>
                     <option value="1.5%">1.5%</option>
                     <option value="2%">2%</option>
@@ -637,10 +700,14 @@
             <h3><b>AUCTION</b></h3>
             <textarea id="Information_AUCTION" disabled></textarea>
             <!-- FYI: If the house is to be auctioned off check yes or no. List details in the description area. -->
-            <select id="information_checkbox_41">
+            <select id="information_checkbox_41" name="information_checkbox_41"
+                onchange="if(this.value=='yes'){document.getElementById('information_checkbox_41_auction').style.display='block'}else{document.getElementById('information_checkbox_41_auction').style.display='none'}">
                 <option value="yes">Yes</option>
                 <option value="no" selected>No</option>
             </select>
+            <textarea placeholder="Input information here" id="information_checkbox_41_auction"
+                name="information_checkbox_41_auction"
+                style="display:none; background: rgb(241, 241, 120);color: black;"></textarea>
             <div class="second-radio">
                 <input type="checkbox" id="information_checkbox_12_NA_4" name="information_checkbox_12_NA_4"
                     value="N/A or Don’t Know">
@@ -650,13 +717,15 @@
             <h3><b>STIPULATION OF SALE</b> </h3>
             <textarea id="Information_STIPULATION_OF_SALE" disabled></textarea>
             <div class="second-radio">
-                <select onchange="information_select_5_dropdownChanges()" id="information_select_5">
+                <select onchange="information_select_5_dropdownChanges()" id="information_select_5"
+                    name="information_select_5">
                     <option value="yes">Yes</option>
                     <option value="no" selected>No</option>
                 </select>
             </div>
             <div class="second-radio">
                 <textarea placeholder="Input information here" id="information_select_5_textarea3"
+                    name="information_select_5_textarea3"
                     style="display:none; background: rgb(241, 241, 120);color: black;"></textarea>
             </div>
             <div class="second-radio">
@@ -870,7 +939,7 @@
                     <option value="Yes">Yes</option>
                     <option value="No" selected>No</option>
                 </select><br />
-                <textarea id="desc_broker_owner_textarea"
+                <textarea id="desc_broker_owner_textarea" name="desc_broker_owner_textarea"
                     style="display:none;background: rgb(241, 241, 120);color: black;"></textarea>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_15" name="information_checkbox_12_NA_15"
@@ -1064,8 +1133,41 @@
                     <label for="information_checkbox_12_NA_119">N/A or Don’t Know</label>
                 </div>
 
+
+
+                <h3>CITY</h3>
+                <textarea style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"
+                    name="property_address_city1" placeholder="City"></textarea>
+                <!-- <input type="text" style="width:100%;height: 50px;" placeholder="City"> -->
+                <div class="second-radio">
+                    <input type="checkbox" id="information_checkbox_12_NA_120" name="information_checkbox_12_NA_120"
+                        value="dewey">
+                    <label for="information_checkbox_12_NA_120">N/A or Don’t Know</label>
+                </div>
+
+                <h3>STATE</h3>
+                <textarea style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"
+                    name="property_address_state1" placeholder="State"></textarea>
+                <!-- <input type="text" style="width:100%;height: 50px;" placeholder="State"> -->
+                <div class="second-radio">
+                    <input type="checkbox" id="information_checkbox_12_NA_121" name="information_checkbox_12_NA_121"
+                        value="dewey">
+                    <label for="information_checkbox_12_NA_121">N/A or Don’t Know</label>
+                </div>
+
+
+                <h3>ZIP CODE </h3>
+                <textarea style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"
+                    name="property_address_zip_code1" placeholder="Zip Code #"></textarea>
+                <!-- <input type="text" style="width:100%;height: 50px;" placeholder="Zip Code #"> -->
+                <div class="second-radio">
+                    <input type="checkbox" id="information_checkbox_12_NA_122" name="information_checkbox_12_NA_122"
+                        value="dewey">
+                    <label for="information_checkbox_12_NA_122">N/A or Don’t Know</label>
+                </div>
+
                 <h3>COUNTRY</h3>
-                <select id="Address_select_1" name="property_address_country_select">
+                <select id="Address_select_1" name="property_address_country_select" onchange="console.log(this.value)">
                     <option value="United States" selected>United States</option>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Åland Islands">Åland Islands</option>
@@ -1311,37 +1413,6 @@
                     <option value="no">Zimbabwe</option>
                 </select>
 
-                <h3>CITY</h3>
-                <textarea style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"
-                    name="property_address_city1" placeholder="City"></textarea>
-                <!-- <input type="text" style="width:100%;height: 50px;" placeholder="City"> -->
-                <div class="second-radio">
-                    <input type="checkbox" id="information_checkbox_12_NA_120" name="information_checkbox_12_NA_120"
-                        value="dewey">
-                    <label for="information_checkbox_12_NA_120">N/A or Don’t Know</label>
-                </div>
-
-                <h3>STATE</h3>
-                <textarea style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"
-                    name="property_address_state1" placeholder="State"></textarea>
-                <!-- <input type="text" style="width:100%;height: 50px;" placeholder="State"> -->
-                <div class="second-radio">
-                    <input type="checkbox" id="information_checkbox_12_NA_121" name="information_checkbox_12_NA_121"
-                        value="dewey">
-                    <label for="information_checkbox_12_NA_121">N/A or Don’t Know</label>
-                </div>
-
-
-                <h3>ZIP CODE </h3>
-                <textarea style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"
-                    name="property_address_zip_code1" placeholder="Zip Code #"></textarea>
-                <!-- <input type="text" style="width:100%;height: 50px;" placeholder="Zip Code #"> -->
-                <div class="second-radio">
-                    <input type="checkbox" id="information_checkbox_12_NA_122" name="information_checkbox_12_NA_122"
-                        value="dewey">
-                    <label for="information_checkbox_12_NA_122">N/A or Don’t Know</label>
-                </div>
-
                 <h3>GEO LAT</h3>
                 <textarea id="ADDRESS_GEO_LAT" disabled></textarea>
                 <textarea style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"
@@ -1352,6 +1423,7 @@
                         value="dewey">
                     <label for="information_checkbox_12_NA_123">N/A or Don’t Know</label>
                 </div>
+
                 <h3>GEO LONG</h3>
                 <textarea id="ADDRESS_GEO_LONG" disabled></textarea>
                 <textarea style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"
@@ -1381,7 +1453,8 @@
             <div class="second-radio">
                 <h3>HISTORIC DISTRICT</h3>
                 <textarea id="ADDRESS_HISTORIC_DISTRICT" disabled></textarea>
-                <select id="Address_select_3" onchange="Address_select_3()" name="property_address_historic_district_1">
+                <select id="Address_select_3" name="property_address_historic_district_1"
+                    onchange="if(this.value=='yes'){document.getElementById('Address_select_3_descrip').style.display='block'}else{document.getElementById('Address_select_3_descrip').style.display='none'}">
                     <option value="yes">yes</option>
                     <option value="no" selected>no</option>
                 </select>
@@ -1890,7 +1963,7 @@
             </div>
             <h4>FAMILY ROOM</h4>
             <div style="display: flex;">
-                <input type="text" placeholder="Length" name="Description_select_FAMILY_ROOM_width_input"
+                <input type="text" placeholder="Length" name="Description_select_FAMILY_ROOM_length_input"
                     style="background:  rgb(241, 241, 120);color: black;width:100%">
                 <span>x</span>
                 <input type="text" placeholder="Width" name="Description_select_FAMILY_ROOM_width_input"
@@ -2278,11 +2351,11 @@
                     name="Description_select_3_checkbox123211" value="Paved">
                 <label for="Description_select_3_checkbox123211">Paved</label>
             </div>
-            <div class="second-radio">
+            <!-- <div class="second-radio">
                 <input type="checkbox" id="Description_select_3_checkbox123212"
                     name="Description_select_3_checkbox123212" value="On Street">
                 <label for="Description_select_3_checkbox123212">On Street</label>
-            </div>
+            </div> -->
             <div class="second-radio">
                 <input type="checkbox" id="Description_select_3_checkbox123213"
                     name="Description_select_3_checkbox123213" value="Shared">
@@ -2705,11 +2778,11 @@
                     value="Ocean Front">
                 <label for="other_sec_description_check_222">Ocean Front</label>
             </div>
-            <div class="second-radio">
+            <!-- <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_223" name="other_sec_description_check_223"
                     value="Ocean View">
                 <label for="other_sec_description_check_223">Ocean View</label>
-            </div>
+            </div> -->
             <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_224" name="other_sec_description_check_224"
                     value="Pond View">
@@ -2835,85 +2908,94 @@
                     value="ZONE A" checked>
                 <label for="other_sec_description_check_3">ZONE A</label>
             </div>
-            <textarea style="background: rgb(241, 241, 120);color: black;"
-                name="other_sec_description_ZONE_A_1"></textarea>
+            <textarea id="Description_ZONE_A" disabled name="other_sec_description_ZONE_A_1"></textarea>
+
             <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_31" name="other_sec_description_check_31"
                     value="ZONE AE, A1-30">
                 <label for="other_sec_description_check_31">ZONE AE, A1-30</label>
             </div>
-            <textarea style="background: rgb(241, 241, 120);color: black;"
-                name="other_sec_description_ZONE_AE_A1_30_1"></textarea>
+            <textarea id="Description_ZONE_AE_A1_30" disabled name="other_sec_description_ZONE_AE_A1_30_1"></textarea>
+
             <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_32" name="other_sec_description_check_32"
                     value="ZONE AH">
                 <label for="other_sec_description_check_32">ZONE AH </label>
             </div>
-            <textarea style="background: rgb(241, 241, 120);color: black;"
-                name="other_sec_description_ZONE_AH_1"></textarea>
+            <textarea id="Description_ZONE_AH" disabled name="other_sec_description_ZONE_AH_1"></textarea>
+
             <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_33" name="other_sec_description_check_33"
                     value="ZONE AO">
                 <label for="other_sec_description_check_33">ZONE AO </label>
             </div>
-            <textarea style="background: rgb(241, 241, 120);color: black;"
-                name="other_sec_description_ZONE_AO_123"></textarea>
+            <textarea id="Description_ZONE_AO" disabled name="other_sec_description_ZONE_AO_123"></textarea>
+
             <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_34" name="other_sec_description_check_34"
                     value="ZONE AR">
                 <label for="other_sec_description_check_34">ZONE AR </label>
             </div>
-            <textarea style="background: rgb(241, 241, 120);color: black;"
-                name="other_sec_description_ZONE_AR_123"></textarea>
+            <textarea id="Description_ZONE_AR" disabled name="other_sec_description_ZONE_AR_123"></textarea>
+
             <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_35" name="other_sec_description_check_35"
                     value="ZONE A99">
                 <label for="other_sec_description_check_35">ZONE A99 </label>
             </div>
-            <textarea style="background: rgb(241, 241, 120);color: black;"
-                name="other_sec_description_ZONE_A999"></textarea>
+            <textarea id="Description_ZONE_A99" disabled name="other_sec_description_ZONE_A999"></textarea>
+
             <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_36" name="other_sec_description_check_36"
                     value="ZONE V">
                 <label for="other_sec_description_check_36">ZONE V </label>
             </div>
-            <textarea style="background: rgb(241, 241, 120);color: black;"
-                name="other_sec_description_ZONE_V_111"></textarea>
+            <textarea id="Description_ZONE_V" disabled name="other_sec_description_ZONE_V_111"></textarea>
+
             <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_37" name="other_sec_description_check_37"
                     value="ZONE VE, V1-30">
                 <label for="other_sec_description_check_37">ZONE VE, V1-30 </label>
             </div>
-            <textarea style="background: rgb(241, 241, 120);color: black;"
-                name="other_sec_description_ZONE_VE_V1_30"></textarea>
+            <textarea id="Description_ZONE_VE_V1_30" disabled name="other_sec_description_ZONE_VE_V1_30"></textarea>
+
             <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_38" name="other_sec_description_check_38"
                     value="Zone X Shaded">
                 <label for="other_sec_description_check_38">Zone X Shaded </label>
             </div>
-            <textarea style="background: rgb(241, 241, 120);color: black;"
-                name="other_sec_description_ZONE_X_shaded"></textarea>
-            <div class="second-radio">
+            <textarea id="Description_Zone_X_Shaded" disabled name="other_sec_description_ZONE_X_shaded"></textarea>
+
+            <!-- <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_39" name="other_sec_description_check_39"
                     value="Moderate-risk zones ">
                 <label for="other_sec_description_check_39">Moderate-risk zones </label>
-            </div>
-            <textarea style="background: rgb(241, 241, 120);color: black;"
-                name="other_sec_description_ZONE_Moderate_risk"></textarea>
+            </div> -->
+            <!-- <textarea  id="Description_Moderate_risk_zones" disabled name="other_sec_description_ZONE_Moderate_risk"></textarea> -->
+
             <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_310" name="other_sec_description_check_310"
                     value="Zone X Unshaded">
                 <label for="other_sec_description_check_310">Zone X Unshaded </label>
             </div>
-            <textarea style="background: rgb(241, 241, 120);color: black;"
-                name="other_sec_description_ZONE_X_Unshaded"></textarea>
-            <div class="second-radio">
+            <textarea id="Description_Zone_X_Unshaded" disabled name="other_sec_description_ZONE_X_Unshaded"></textarea>
+
+            <!-- <div class="second-radio">
                 <input type="checkbox" id="other_sec_description_check_311" name="other_sec_description_check_311"
                     value="Low-risk zones">
                 <label for="other_sec_description_check_311"> Low-risk zones </label>
+            </div> -->
+            <!-- <textarea  id="Description_Low_risk_zones" disabled name="other_sec_description_ZONE_Low_risk_z"></textarea> -->
+
+            <div class="second-radio">
+                <input type="checkbox" id="other_sec_description_check_312_other"
+                    name="other_sec_description_check_312_other" value="other"
+                    onclick="if(this.checked){ document.getElementById('other_sec_description_ZONE_Low_risk_z_other').style.display = 'block';}else{document.getElementById('other_sec_description_ZONE_Low_risk_z_other').style.display = 'none';}" />
+                <label for="other_sec_description_check_312_other"> Other </label>
             </div>
-            <textarea style="background: rgb(241, 241, 120);color: black;"
-                name="other_sec_description_ZONE_Low_risk_z"></textarea>
+            <textarea style="display: none; background: rgb(241, 241, 120);color: black;"
+                name="other_sec_description_ZONE_Low_risk_z_other"
+                id="other_sec_description_ZONE_Low_risk_z_other"></textarea>
             <div class="second-radio">
                 <input type="checkbox" id="information_checkbox_12_NA_168" name="information_checkbox_12_NA_168"
                     value="dewey">
@@ -3315,8 +3397,8 @@
                     <div class="add_new_html_form">
                         <input type="text" placeholder="#  of Full Baths" name="information_OF_FULL_BATHS_show_1"
                             style="background: rgb(241, 241, 120);color: black;width:100%">
-                        <a onclick="add_bath_room()" class="control-button-style"><span style="color: white;">ADD MORE
-                                FULL BATHS</span></a>
+                        <!-- <a onclick="add_bath_room()" class="control-button-style"><span style="color: white;">ADD MORE
+                                FULL BATHS</span></a> -->
                     </div>
                 </div>
                 <div class="second-radio">
@@ -3332,8 +3414,8 @@
                     <div class="add_new_html_form">
                         <input type="text" placeholder="# of 1/2 Baths" name="information_OF_1_2_BATHS_show_1"
                             style="background: rgb(241, 241, 120);color: black;width:100%">
-                        <a onclick="add_bath_1_2_BATH_room()" class="control-button-style"><span
-                                style="color: white;">ADD MORE 1/2 BATHS</span></a>
+                        <!-- <a onclick="add_bath_1_2_BATH_room()" class="control-button-style"><span
+                                style="color: white;">ADD MORE 1/2 BATHS</span></a> -->
                     </div>
                 </div>
                 <div class="second-radio">
@@ -3349,8 +3431,8 @@
                     <div class="add_new_html_form">
                         <input type="text" placeholder="#  of Bedrooms" name="information_bedroom_show_1"
                             style="background: rgb(241, 241, 120);color: black;width:100%">
-                        <a onclick="add_bath_BEDROOMS()" class="control-button-style"><span style="color: white;">ADD
-                                MORE BEDROOMS</span></a>
+                        <!-- <a onclick="add_bath_BEDROOMS()" class="control-button-style"><span style="color: white;">ADD
+                                MORE BEDROOMS</span></a> -->
                     </div>
                 </div>
                 <div class="second-radio">
@@ -3552,6 +3634,10 @@
             <div class="second-radio">
                 <input type="checkbox" id="next_other_check_41" name="next_other_check_41" value="Well">
                 <label for="next_other_check_41">Well</label>
+            </div>
+            <div class="second-radio">
+                <input type="checkbox" id="next_other_check_41_heater" name="next_other_check_41_heater" value="Well">
+                <label for="next_other_check_41_heater">WATER HEATER</label>
             </div>
             <div class="second-radio">
                 <input type="checkbox" id="next_other_check_42" name="next_other_check_42" value="other"
@@ -4622,8 +4708,9 @@
                 <a onclick="go_next_section(5, 'Instructions')" class="control-button-style"><span
                         style="color: white;">Back</span></a>
                 <!-- <a onclick="go_next_section(7, 'photo_upload')" class="control-button-style"><span
-                        style="color: white;">Next</span></a> -->               
+                        style="color: white;">Next</span></a> -->
             </div>
+            <textarea id="Instruction_SUBMIT_BUTTON" disabled style="color: white;"></textarea><br />
             <div style="display: flex;justify-content: center;">
                 <input type="submit" value="SUBMIT" style="border-radius: 15px;background:#133c55;color: white; ">
             </div>
@@ -4633,8 +4720,19 @@
     </form>
 
     <script type="text/javascript">
+        var home_retail_regex_id = "homeretail_" + Math.random() * 1000000000000000000;
+        console.log("random", home_retail_regex_id);
+        localStorage.setItem("home_retail_regex_id", home_retail_regex_id)
+        localStorage.setItem("home_retail_user_information", home_retail_regex_id)
+
+        document.getElementById("home_retail_regex_id").value = home_retail_regex_id;
+        document.getElementById("home_retail_user_information").value = home_retail_regex_id;
+
         document.getElementById('home_seller_kind').value = localStorage.getItem("real_link_kind");
         console.log("localStorage:", localStorage.getItem("real_link_kind"));
+
+        document.getElementById('datePicker').valueAsDate = new Date();
+
         window.ownerCount = 1
         window.full_bath = 1
         window.bath_1_2_bath = 1
@@ -5045,6 +5143,7 @@
             Type_select_31_owner_div.appendChild(btn);
             window.add_more_room++;
         }
+
 
 
 

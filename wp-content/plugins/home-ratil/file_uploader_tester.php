@@ -6,11 +6,28 @@ function home_retail_image_dir_in_plugin( $dirs ) {
     return $dirs;
   }
 
+// global $filename_change;
+// function make_filename_hash($filename) {
+//     $info = pathinfo($filename);
+//     $ext  = empty($info['extension']) ? '' : '.' . $info['extension'];
+//     $name = basename($filename, $ext);
+
+//     $filename_change = "upload_file_".rand(). $ext;
+
+//     return $filename_change;
+//     // if($post_id>0){
+//     //     return $post_id."_".$name . $ext;
+//     // }else{
+//     //     return $name . $ext;
+//     // }
+// }
+
 function hwolf0610_FILE_UPLOAD_TESTER(){
     echo "<h1>HARRY_NARUTO_hwolf0610_FILE_UPLOADER</h1>";
 
     echo "<h2>ADD Data</h2>";    
     add_filter( 'upload_dir', 'home_retail_image_dir_in_plugin' );
+    // add_filter('sanitize_file_name', 'make_filename_hash', 10);
 
             // Upload file
             if(isset($_POST['but_submit'])){
