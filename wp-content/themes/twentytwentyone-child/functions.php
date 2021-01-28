@@ -298,16 +298,17 @@ function home_retail_image_dir( $dirs ) {
     // UPDATE 'wp_hwolf__home_retail_address' SET 'property_address_street_address1' = '1111111' WHERE 'wp_hwolf__home_retail_address'.'home_id' = 1;
     function delete_a_recode_item_query($request){
       global $wpdb;
-         $table_name_home_retail_address = $wpdb->prefix . '_home_retail_address';
+         $table_name_home_retail_photo_upload = $wpdb->prefix . '_home_retail_photo_upload';
         //  $wpdb->query($wpdb->prepare("UPDATE '$table_name_home_retail_address' SET 'property_address_street_address1' = '212356 Log Angeles' WHERE '$table_name_home_retail_address'.'home_id' = 1"));
-         $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_address` SET `property_address_street_address1` = '212356 Log Angeles' WHERE `$table_name_home_retail_address`.`home_id` = 1;"));
+         $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_photo_upload` SET `file_upload_EXTERIOR_LANDSCAPING` = 'home-image-3.jpg' WHERE `$table_name_home_retail_photo_upload`.`home_id` = 3;"));
          return "succee";
     }
 
+    // UPDATE `wp_hwolf__home_retail_photo_upload` SET `file_upload_EXTERIOR_LANDSCAPING` = '2222' WHERE `wp_hwolf__home_retail_photo_upload`.`home_id` = 1;
 
 
 
-
+    // "DELETE FROM `wp_hwolf__home_retail_photo_upload` WHERE `wp_hwolf__home_retail_photo_upload`.`home_id` = 2"
   //     "DROP TABLE 'wp-form'.'wp_hwolf_home_retail_instruction_blue_box'"?
   // http://localhost/wp-form/wp-json/home_retail/delete_blue_box_table
 add_action('rest_api_init', function () {
@@ -341,23 +342,41 @@ function delete_blue_box_table($request) {
 
   // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_instruction_blue_box "));
 
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_information "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_type "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_address "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_instruction "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_photo_upload "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_broker "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_1 "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_2 "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_3 "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_4 "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_5 "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_6 "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_7 "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_8 "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_9 "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_10 "));
-  $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_11 "));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_information` WHERE `$table_name_home_retail_information`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_type` WHERE `$table_name_home_retail_type`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_address` WHERE `$table_name_home_retail_address`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_instruction` WHERE `$table_name_home_retail_instruction`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_photo_upload` WHERE `$table_name_home_retail_photo_upload`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_broker` WHERE `$table_name_home_retail_broker`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_description_1` WHERE `$table_name_home_retail_description_1`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_description_2` WHERE `$table_name_home_retail_description_2`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_description_3` WHERE `$table_name_home_retail_description_3`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_description_4` WHERE `$table_name_home_retail_description_4`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_description_5` WHERE `$table_name_home_retail_description_5`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_description_6` WHERE `$table_name_home_retail_description_6`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_description_7` WHERE `$table_name_home_retail_description_7`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_description_8` WHERE `$table_name_home_retail_description_8`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_description_9` WHERE `$table_name_home_retail_description_9`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_description_10` WHERE `$table_name_home_retail_description_10`.`home_id` = 4"));
+  $wpdb->query($wpdb->prepare("DELETE FROM `$table_name_home_retail_description_11` WHERE `$table_name_home_retail_description_11`.`home_id` = 4"));
+
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_information "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_type "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_address "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_instruction "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_photo_upload "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_broker "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_1 "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_2 "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_3 "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_4 "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_5 "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_6 "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_7 "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_8 "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_9 "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_10 "));
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_description_11 "));
 
     return "success";
 }

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
-        let Total_Array = []
+
+        console.log("home_id", localStorage.getItem("edit_my_properties_home_id"))
         $.ajax({
             url: 'https://syohn.com/wp-json/home_retail/get_data_from_database_instruction_blue_box', // my php file
             type: 'GET', // type of the HTTP request
@@ -155,6 +156,38 @@
                 })
             }
         });
+
+        function get_default_data() {
+            $.ajax({
+                url: 'https://syohn.com/wp-json/home_retail/get_data_from_database_information', // my php file
+                type: 'GET', // type of the HTTP request
+                success: function (result) {
+                    //   var obj = jQuery.parseJSON(result);
+                    console.log("result", result);
+                    // var url_string = window.location.href
+                    // var url = new URL(url_string);
+                    // var home_id = url.searchParams.get("home_id");
+
+                    var edit_home_information_id = localStorage.getItem("edit_my_properties_home_id");
+
+                    console.log(edit_home_information_id);
+                    result.map((item, index) => {
+                        if (item.home_id == edit_home_information_id) {
+
+                            document.getElementById('information_checkbox_19').checked = item.information_checkbox_19 ? true : false;
+
+
+
+
+                        }
+                    })
+                }
+            });
+        }
+
+        get_default_data();
+
+
     </script>
     <style>
         body {
@@ -346,8 +379,7 @@
         <!-- <button class="tablinks" onclick="openCity(event, 'photo_upload')">PHOTO UPLOAD</button>
         <button class="tablinks" onclick="openCity(event, 'pdf_documents')">PDF DOCUMENTS</button> -->
     </div>
-    <form action="https://syohn.com/wp-json/home_retail/add/formdata" method="post" enctype='multipart/form-data'
-        id="nameform">
+    <form method="post" enctype='multipart/form-data' id="nameform">
         <input type="hidden" id="home_seller_kind" name="home_seller_kind">
         <input type="hidden" id="home_retail_regex_id" name="home_retail_regex_id">
         <input type="hidden" id="home_retail_user_information" name="home_retail_user_information">
@@ -4711,7 +4743,7 @@
             </div>
             <textarea id="Instruction_SUBMIT_BUTTON" disabled style="color: white;"></textarea><br />
             <div style="display: flex;justify-content: center;">
-                <input type="submit" value="SUBMIT" style="border-radius: 15px;background:#133c55;color: white; ">
+                <input type="submit" value="SAVE" style="border-radius: 15px;background:#133c55;color: white; ">
             </div>
         </div>
 
