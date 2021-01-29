@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
+    var select_home_id="";
+    var select_home_kind= "";
         function get_default_data() {
             $.ajax({
                 url: 'https://syohn.com/wp-json/home_retail/get_data_from_database_information', // my php file
@@ -21,6 +23,9 @@
                     console.log(home_id);
                     result.map((item, index) => {
                         if (item.home_id == home_id) {
+                            select_home_id = item.home_id;
+                            select_home_kind = item.home_seller_kind;
+
                             Top_title_home = "";
                             Top_title_home += item.property_address_city1 ? item.property_address_city1 : "";
                             Top_title_home += item.property_address_state1 ? " " + item.property_address_state1 : "";
@@ -56,7 +61,6 @@
                             }
 
                             var Information_Buying_Agent_Commission = "";
-                            Information_Buying_Agent_Commission += item.information_Buying_Agent_Commi_des ? item.information_Buying_Agent_Commi_des : "";
                             Information_Buying_Agent_Commission += item.information_Buying_Agent_Commi_des_sct ? item.information_Buying_Agent_Commi_des_sct : "";
 
                             document.getElementById('Information_Buying_Agent_Commission').innerHTML = "<h4> Buying Agent Commission</h4>" + Information_Buying_Agent_Commission;
@@ -1356,6 +1360,8 @@
         get_default_data();
 
         function go_edit() {
+            localStorage.setItem("edit_my_properties_home_id", select_home_id);
+            localStorage.setItem("real_link_kind", select_home_kind); 
             window.location.href = "https://syohn.com/my-home-properties-detail-edit";
         }
 

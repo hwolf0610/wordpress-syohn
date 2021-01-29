@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
 
         console.log("home_id", localStorage.getItem("edit_my_properties_home_id"))
@@ -157,10 +157,7 @@
             }
         });
 
-
-
-        $(document).ready(function () {
-            console.log("jQuery !!!")
+        function get_default_data() {
             $.ajax({
                 url: 'https://syohn.com/wp-json/home_retail/get_data_from_database_information', // my php file
                 type: 'GET', // type of the HTTP request
@@ -178,55 +175,21 @@
                         if (item.home_id == edit_home_information_id) {
 
                             $("#broker_agent_first_name").val(item.broker_agent_first_name);
-                            $("#broker_agent_last_name").val(item.broker_agent_last_name);
-                            $("#broker_agent_phone").val(item.broker_agent_phone);
-                            $("#broker_agent_email").val(item.broker_agent_email);
-                            $("#broker_agent_co_listing_agent").val(item.broker_agent_co_listing_agent);
-                            $("#broker_agent_broker_select").val(item.broker_agent_broker_select);
-                            $("#broker_agent_listing_date").val(item.broker_agent_listing_date);
-                            $("#broker_agent_selling_commission_percentage").val(item.broker_agent_selling_commission_percentage);
-                            $("#broker_agent_type_in_number_percentage").val(item.broker_agent_type_in_number_percentage);
-                            $("#broker_agent_seller_agreement_type_select").val(item.broker_agent_seller_agreement_type_select);
-                            $("#broker_agent_prospect_excemt_select").val(item.broker_agent_prospect_excemt_select);
-                            $("#broker_agent_agreement_services_select").val(item.broker_agent_agreement_services_select);
 
-                            document.getElementById('information_checkbox_11').checked = item.information_checkbox_11 ? true : false;
-                            document.getElementById('information_checkbox_12').checked = item.information_checkbox_12 ? true : false;
-                            document.getElementById('information_checkbox_13').checked = item.information_checkbox_13 ? true : false;
-                            document.getElementById('information_checkbox_14').checked = item.information_checkbox_14 ? true : false;
-                            document.getElementById('information_checkbox_15').checked = item.information_checkbox_15 ? true : false;
-                            document.getElementById('information_checkbox_16').checked = item.information_checkbox_16 ? true : false;
-                            document.getElementById('information_checkbox_17').checked = item.information_checkbox_17 ? true : false;
-                            document.getElementById('information_checkbox_18').checked = item.information_checkbox_18 ? true : false;
+                            // document.getElementById('broker_agent_first_name').value = item.broker_agent_first_name ? item.broker_agent_first_name  : "";
+                            // document.getElementById('broker_agent_last_name').value = item.broker_agent_last_name ? item.broker_agent_last_name  : "";
+                            // document.getElementById('broker_agent_phone').value = item.broker_agent_phone ? item.broker_agent_phone  : "";
+                            // document.getElementById('broker_agent_email').value = item.broker_agent_email ? item.broker_agent_email  : "";
+                            // document.getElementById('broker_agent_co_listing_agent').value = item.broker_agent_co_listing_agent ? item.broker_agent_co_listing_agent  : "";
+                            // document.getElementById('broker_agent_broker_select').value = item.broker_agent_broker_select ? item.broker_agent_broker_select  : "";
+                            // document.getElementById('broker_agent_listing_date').value = item.broker_agent_listing_date ? item.broker_agent_listing_date  : "";
+                            // document.getElementById('broker_agent_selling_commission_percentage').value = item.broker_agent_selling_commission_percentage ? item.broker_agent_selling_commission_percentage  : "";
+                            // document.getElementById('broker_agent_type_in_number_percentage').value = item.broker_agent_type_in_number_percentage ? item.broker_agent_type_in_number_percentage  : "";
+                            // document.getElementById('broker_agent_seller_agreement_type_select').value = item.broker_agent_seller_agreement_type_select ? item.broker_agent_seller_agreement_type_select  : "";
+                            // document.getElementById('broker_agent_prospect_excemt_select').value = item.broker_agent_prospect_excemt_select ? item.broker_agent_prospect_excemt_select  : "";
+                            // document.getElementById('broker_agent_agreement_services_select').value = item.broker_agent_agreement_services_select ? item.broker_agent_agreement_services_select  : "";
+
                             document.getElementById('information_checkbox_19').checked = item.information_checkbox_19 ? true : false;
-                            document.getElementById('information_checkbox_111').checked = item.information_checkbox_111 ? true : false;
-                            document.getElementById('information_checkbox_112').checked = item.information_checkbox_112 ? true : false;
-                            document.getElementById('information_checkbox_113').checked = item.information_checkbox_113 ? true : false;
-                            document.getElementById('information_checkbox_114').checked = item.information_checkbox_114 ? true : false;
-                            document.getElementById('information_checkbox_115').checked = item.information_checkbox_115 ? true : false;
-                            document.getElementById('information_checkbox_116').checked = item.information_checkbox_116 ? true : false;
-                            if (item.information_checkbox_117) {
-                                document.getElementById('information_checkbox_117').checked = item.information_checkbox_117 ? true : false;
-                                $("#information_checkbox_1_textarea").css("display", "block")
-                                $("#information_checkbox_1_textarea").val(item.information_checkbox_1_textarea);
-
-                            }
-                            document.getElementById('information_checkbox_12_NA_1').checked = item.information_checkbox_12_NA_1 ? true : false;
-
-                            console.log("val:", item.information_Buying_Agent_Commi_des_sct)
-                            $('#information_Buying_Agent_Commi_des_sct').val(item.information_Buying_Agent_Commi_des_sct);
-                            // $("#information_Buying_Agent_Commi_des_sct [value=" + item.information_Buying_Agent_Commi_des_sct + "]").attr('selected', 'true');
-                            // $('#mySelectElement option[value="' + item.information_Buying_Agent_Commi_des_sct + '"]').prop('selected', true);
-                            // $('#information_Buying_Agent_Commi_des_sct>option[value="' + item.information_Buying_Agent_Commi_des_sct + '"]').prop('selected', true);
-
-                            // $("#information_Buying_Agent_Commi_des_sct").val(item.information_Buying_Agent_Commi_des_sct);
-
-                            document.getElementById('information_checkbox_18').checked = item.information_checkbox_18 ? true : false;
-                            document.getElementById('information_checkbox_18').checked = item.information_checkbox_18 ? true : false;
-                            document.getElementById('information_checkbox_18').checked = item.information_checkbox_18 ? true : false;
-                            document.getElementById('information_checkbox_18').checked = item.information_checkbox_18 ? true : false;
-                            document.getElementById('information_checkbox_18').checked = item.information_checkbox_18 ? true : false;
-                            document.getElementById('information_checkbox_18').checked = item.information_checkbox_18 ? true : false;
 
 
 
@@ -235,6 +198,12 @@
                     })
                 }
             });
+        }
+
+        get_default_data();
+
+        $(document).ready(function () {
+            console.log("jQuery !!!")
         });
 
         // var home_retail_regex_id = "homeretail_" + Math.random() * 1000000000000000000;
@@ -276,8 +245,8 @@
             $("#Information").css("display", "block");
 
             // // $("tablinks").addClass("important");
-            // vardefault_tablink = $("tablinks")
-            // default_tablink[1].toggleClass(default_tablink[1] + "active");
+            // default_tablink = $("tablinks")
+            // default_tablink[1].addClass(default_tablink[1] + "active");
             window.scrollTo(0, 0);
         }
 
@@ -872,13 +841,13 @@
             <div>
                 <h1> Broker/Agent </h1>
                 <textarea id="Broker_Broker_Agent" disabled></textarea>
-                <input type="text" placeholder="First Name " name="broker_agent_first_name" id="broker_agent_first_name"
+                <input type="text" placeholder="First Name " name="broker_agent_first_name"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" />
-                <input type="text" placeholder="Last Name " name="broker_agent_last_name" id="broker_agent_last_name"
+                <input type="text" placeholder="Last Name " name="broker_agent_last_name"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" />
-                <input type="text" placeholder="Phone " name="broker_agent_phone" id="broker_agent_phone"
+                <input type="text" placeholder="Phone " name="broker_agent_phone"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" />
-                <input type="text" placeholder="Email " name="broker_agent_email" id="broker_agent_email"
+                <input type="text" placeholder="Email " name="broker_agent_email"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" />
             </div>
 
@@ -886,15 +855,15 @@
                 <h3>Co-Listing Agent</h3>
                 <textarea id="Broker_Co_Listing_Agent" disabled></textarea>
                 <input type="text" placeholder="Type in Co-Listing Agents Real Estate Agency name"
-                    name="broker_agent_co_listing_agent" id="broker_agent_co_listing_agent"
+                    name="broker_agent_co_listing_agent"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" />
             </div>
 
             <div>
                 <h3>Broker</h3>
                 <textarea id="Broker_Broker" disabled></textarea>
-                <select name="broker_agent_broker_select" id="broker_agent_broker_select">
-                    <option value="Broker 1" >Broker 1</option>
+                <select name="broker_agent_broker_select">
+                    <option value="Broker 1" selected>Broker 1</option>
                     <option value="Broker 2">Broker 2</option>
                     <option value="Broker 3">Broker 3</option>
                     <option value="Broker 4">Broker 4</option>
@@ -909,10 +878,9 @@
                 <h3><b>Listing Date</b></h3>
                 <textarea id="Broker_Listing_Date" disabled></textarea>
                 <div class="second-radio">
-                    <input type="date" name="broker_agent_listing_date" class="form-control"
-                        id="broker_agent_listing_date" />
+                    <input type="date" name="broker_agent_listing_date" class="form-control" id="datePicker" />
                     <!-- <select name="broker_agent_listing_date">
-                        <option value="Agency 1" >1/21/2021</option>
+                        <option value="Agency 1" selected>1/21/2021</option>
                         <option value="Agency 2">Agency 2</option>
                         <option value="Agency 3">Agency 3</option>
                         <option value="Agency 4">Agency 4</option>
@@ -928,9 +896,8 @@
                 <!-- <input type="text" placeholder="Selling Agent Type in number" name="broker_agent_selling_commission"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" /> -->
                 <h4>Listing Agent Percentage</h4>
-                <select name="broker_agent_selling_commission_percentage"
-                    id="broker_agent_selling_commission_percentage">
-                    <option value="0.5%" >0%</option>
+                <select name="broker_agent_selling_commission_percentage">
+                    <option value="0.5%" selected>0%</option>
                     <option value="0.5%">0.5%</option>
                     <option value="1%">1%</option>
                     <option value="1.5%">1.5%</option>
@@ -947,8 +914,8 @@
                 <!-- <input type="text" placeholder="Co-Listing Agent  Type in number" name="broker_agent_type_in_number"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" /> -->
                 <h4>Co-Listing Agent Percentage</h4>
-                <select name="broker_agent_type_in_number_percentage" id="broker_agent_type_in_number_percentage">
-                    <option value="0.5%" >0%</option>
+                <select name="broker_agent_type_in_number_percentage">
+                    <option value="0.5%" selected>0%</option>
                     <option value="0.5%">0.5%</option>
                     <option value="1%">1%</option>
                     <option value="1.5%">1.5%</option>
@@ -971,7 +938,7 @@
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" />
                 <h4>Percentage</h4>
                 <select name="broker_agent_buying_agent_commision_percentaeg">
-                    <option value="0.5%" >0.5%</option>
+                    <option value="0.5%" selected>0.5%</option>
                     <option value="1%">1%</option>
                     <option value="1.5%">1.5%</option>
                     <option value="2%">2%</option>
@@ -990,9 +957,8 @@
                 <h3><b>Sellers Agreement Type</b></h3>
                 <textarea id="Broker_Sellers_Agreement_Type" disabled></textarea>
                 <div class="second-radio">
-                    <select name="broker_agent_seller_agreement_type_select"
-                        id="broker_agent_seller_agreement_type_select">
-                        <option value="Exclusive Right To Sell" >Exclusive Right To Sell</option>
+                    <select name="broker_agent_seller_agreement_type_select">
+                        <option value="Exclusive Right To Sell" selected>Exclusive Right To Sell</option>
                         <option value="Exclusive Agency">Exclusive Agency</option>
                         <option value="Open Listing Agreement">Open Listing Agreement</option>
                         <option value="Net Listing Agreement">Net Listing Agreement</option>
@@ -1004,9 +970,9 @@
                 <h3><b>Prospect Exempt</b></h3>
                 <textarea id="Broker_Prospect_Exempt" disabled></textarea>
                 <div class="second-radio">
-                    <select name="broker_agent_prospect_excemt_select" id="broker_agent_prospect_excemt_select">
+                    <select name="broker_agent_prospect_excemt_select">
                         <option value="yes">Yes</option>
-                        <option value="no" >No</option>
+                        <option value="no" selected>No</option>
                     </select>
                 </div>
             </div>
@@ -1015,9 +981,9 @@
                 <h3><b>Agreement Services</b></h3>
                 <textarea id="Broker_Agreement_Services" disabled></textarea>
                 <div class="second-radio">
-                    <select name="broker_agent_agreement_services_select" id="broker_agent_agreement_services_select">
+                    <select name="broker_agent_agreement_services_select">
                         <option value="Full Service">Full Service</option>
-                        <option value="Limited Service" >Limited Service</option>
+                        <option value="Limited Service" selected>Limited Service</option>
                     </select>
                 </div>
             </div>
@@ -1128,8 +1094,8 @@
                 <!-- <input type="text" placeholder="Type in number" name="information_Buying_Agent_Commi_des"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" /> -->
                 <h4>Percentage</h4>
-                <select name="information_Buying_Agent_Commi_des_sct" id="information_Buying_Agent_Commi_des_sct">
-                    <option value="0.5%" >0%</option>
+                <select name="information_Buying_Agent_Commi_des_sct">
+                    <option value="0.5%" selected>0%</option>
                     <option value="0.5%">0.5%</option>
                     <option value="1%">1%</option>
                     <option value="1.5%">1.5%</option>
@@ -1210,7 +1176,7 @@
             <select id="information_checkbox_41" name="information_checkbox_41"
                 onchange="if(this.value=='yes'){document.getElementById('information_checkbox_41_auction').style.display='block'}else{document.getElementById('information_checkbox_41_auction').style.display='none'}">
                 <option value="yes">Yes</option>
-                <option value="no" >No</option>
+                <option value="no" selected>No</option>
             </select>
             <textarea placeholder="Input information here" id="information_checkbox_41_auction"
                 name="information_checkbox_41_auction"
@@ -1227,7 +1193,7 @@
                 <select onchange="information_select_5_dropdownChanges()" id="information_select_5"
                     name="information_select_5">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
             </div>
             <div class="second-radio">
@@ -1247,7 +1213,7 @@
             <div class="second-radio">
                 <select onchange="information_select_6_dropdownChanges2()" id="information_select_6">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
             </div>
             <div class="second-radio" id="information_select_6_textarea4" style="display:none;">
@@ -1269,7 +1235,7 @@
             <div class="second-radio">
                 <select onchange="information_select_7_dropdownChanges3()" id="information_select_7">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
             </div>
             <div class="second-radio" id="information_select_7_textarea5" style="display:none; ">
@@ -1396,7 +1362,7 @@
                     <select id="Type_select_owner_3_ss" onchange="Type_select_owner_select()"
                         name="Type_select_owner_3_ss">
                         <option value="Yes">Yes</option>
-                        <option value="No" >No</option>
+                        <option value="No" selected>No</option>
                     </select><br />
                 </div>
 
@@ -1444,7 +1410,7 @@
                 <select id="desc_broker_owner" name="desc_broker_owner_textarea_dropdown"
                     onchange="if(this.value=='Yes'){document.getElementById('desc_broker_owner_textarea').style.display='block'}else{document.getElementById('desc_broker_owner_textarea').style.display='none'}">
                     <option value="Yes">Yes</option>
-                    <option value="No" >No</option>
+                    <option value="No" selected>No</option>
                 </select><br />
                 <textarea id="desc_broker_owner_textarea" name="desc_broker_owner_textarea"
                     style="display:none;background: rgb(241, 241, 120);color: black;"></textarea>
@@ -1512,7 +1478,7 @@
                 <select id="desc_special_ass" name="desc_special_ass"
                     onchange="if(this.value=='Yes'){document.getElementById('desc_special_ass_text').style.display='block'}else{document.getElementById('desc_special_ass_text').style.display='none'}">
                     <option value="Yes">Yes</option>
-                    <option value="No" >No</option>
+                    <option value="No" selected>No</option>
                 </select><br />
                 <textarea id="desc_special_ass_text" name="desc_special_ass_text"
                     style="display:none;background: rgb(241, 241, 120);color: black;"></textarea>
@@ -1685,7 +1651,7 @@
                         })
 
                     </script>
-                    <option value="United States" >United States</option>
+                    <option value="United States" selected>United States</option>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Åland Islands">Åland Islands</option>
                     <option value="Albania">Albania</option>
@@ -1957,7 +1923,7 @@
                 <h3>CITY LIMITS</h3>
                 <textarea id="ADDRESS_CITY_LIMITS" disabled></textarea>
                 <select id="Address_select_2" name="property_address_city_limits_1">
-                    <option value="yes" >yes</option>
+                    <option value="yes" selected>yes</option>
                     <option value="no">no</option>
                 </select>
                 <div class="second-radio">
@@ -1973,7 +1939,7 @@
                 <select id="Address_select_3" name="property_address_historic_district_1"
                     onchange="if(this.value=='yes'){document.getElementById('Address_select_3_descrip').style.display='block'}else{document.getElementById('Address_select_3_descrip').style.display='none'}">
                     <option value="yes">yes</option>
-                    <option value="no" >no</option>
+                    <option value="no" selected>no</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_127" name="information_checkbox_12_NA_127"
@@ -2047,7 +2013,7 @@
                 <h3>HOA</h3>
                 <textarea id="ADDRESS_HOA" disabled></textarea>
                 <select id="Address_select_4" name="property_address_HOA_select1">
-                    <option value="yes" >yes</option>
+                    <option value="yes" selected>yes</option>
                     <option value="no">no</option>
                 </select>
                 <div class="second-radio">
@@ -2085,7 +2051,7 @@
                 <h3>SCHOOL DISTRICT</h3>
                 <textarea id="ADDRESS_SCHOOL_DISTRICT" disabled></textarea>
                 <!-- <select id="Address_select_5">
-                <option value="yes" >yes</option>
+                <option value="yes" selected>yes</option>
                 <option value="no">no</option>
             </select> -->
             </div><br />
@@ -2097,7 +2063,7 @@
                     onchange="if(this.value == 'yes'){document.getElementById('Address_select_6_textarea').style.display='block'}else{document.getElementById('Address_select_6_textarea').style.display='none'}">
                     <!-- <select id="Address_select_6" onchange="Address_select_6()" name="property_address_ELEMENTARY_select"> -->
                     <option value="yes">yes</option>
-                    <option value="no" >no</option>
+                    <option value="no" selected>no</option>
                 </select>
                 <textarea id="Address_select_6_textarea" name="property_address_ELEMENTARY_textarea"
                     style="display: none; background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"></textarea>
@@ -2115,7 +2081,7 @@
                     onchange="if(this.value == 'yes'){document.getElementById('Address_select_7_textarea').style.display='block'}else{document.getElementById('Address_select_7_textarea').style.display='none'}">
                     <!-- <select id="Address_select_7" onchange="Address_select_7()" name="property_address_ELEMENTARY_2_select"> -->
                     <option value="yes">yes</option>
-                    <option value="no" >no</option>
+                    <option value="no" selected>no</option>
                 </select>
                 <textarea id="Address_select_7_textarea" name="property_address_ELEMENTARY_2_textarea"
                     style="display: none; background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"></textarea>
@@ -2134,7 +2100,7 @@
                     <!-- <select id="Address_select_8" onchange="Address_select_8()"
                     name="property_address_MIDDLE_SCHOOL_select"> -->
                     <option value="yes">yes</option>
-                    <option value="no" >no</option>
+                    <option value="no" selected>no</option>
                 </select>
                 <textarea id="Address_select_8_textarea" name="property_address_MIDDLE_SCHOOL_textarea"
                     style="display: none; background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"></textarea>
@@ -2153,7 +2119,7 @@
                     <!-- <select id="Address_select_9" onchange="Address_select_9()"
                     name="property_address_MIDDLE_SCHOOL_2_select"> -->
                     <option value="yes">yes</option>
-                    <option value="no" >no</option>
+                    <option value="no" selected>no</option>
                 </select>
                 <textarea id="Address_select_9_textarea" name="property_address_MIDDLE_SCHOOL_2_textarea"
                     style="display: none; background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"></textarea>
@@ -2172,7 +2138,7 @@
                     <!-- <select id="Address_select_10" onchange="Address_select_10()"
                     name="property_address_HIGH_SCHOOL_select"> -->
                     <option value="yes">yes</option>
-                    <option value="no" >no</option>
+                    <option value="no" selected>no</option>
                 </select>
                 <textarea id="Address_select_10_textarea" name="property_address_HIGH_SCHOOL_textarea"
                     style="display: none; background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"></textarea>
@@ -2191,7 +2157,7 @@
                     <!-- <select id="Address_select_11" onchange="Address_select_11()"
                     name="property_address_HIGH_SCHOOL_2_select"> -->
                     <option value="yes">yes</option>
-                    <option value="no" >no</option>
+                    <option value="no" selected>no</option>
                 </select>
                 <textarea id="Address_select_11_textarea" name="property_address_HIGH_SCHOOL_2_textarea"
                     style="display: none; background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"></textarea>
@@ -2243,7 +2209,7 @@
                     name="PROPERTY_DESCRIPTION_year_built_input">
 
                 <!-- <select id="Description_select_1">
-                <option value="yes" >1800</option>
+                <option value="yes" selected>1800</option>
                 <option value="no">1801</option>
                 <option value="no">1802</option>
                 <option value="no">....</option>
@@ -2308,7 +2274,7 @@
             </div>
 
             <!-- <select id="Description_select_2" onchange="Description_select_2_dropdownChanges3()">
-                <option value="yes" >Wood Frame</option>
+                <option value="yes" selected>Wood Frame</option>
                 <option value="no">Masonry/Block</option>
                 <option value="no">Concrete</option>
                 <option value="no">Steel Frame</option>
@@ -2385,7 +2351,7 @@
             </div>
 
             <!-- <select id="Description_select_3" onchange="Description_select_3_dropdownChanges4()">
-                <option value="yes" >Block</option>
+                <option value="yes" selected>Block</option>
                 <option value="no">Crawl Space</option>
                 <option value="no">Pilings</option>
                 <option value="no">Slab</option>
@@ -2921,7 +2887,7 @@
                     onchange="if(this.value =='yes'){document.getElementById('Description_select_512_dropdownChanges_textarea').style.display='block'}else{document.getElementById('Description_select_512_dropdownChanges_textarea').style.display='none'}"
                     id="Description_select_512_dropdownChanges" name="Description_select_512_dropdownChanges">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
             </div>
             <div class="second-radio">
@@ -3026,7 +2992,7 @@
             <div class="second-radio">
                 <select name="Description_select_4_HANDICAP_ACCESSIBLE">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_155" name="information_checkbox_12_NA_155"
@@ -3040,7 +3006,7 @@
             <div class="second-radio">
                 <select name="Description_select_4_RAMP_1">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_156" name="information_checkbox_12_NA_156"
@@ -3054,7 +3020,7 @@
             <div class="second-radio">
                 <select name="Description_select_4_ACCESSIBLE_ENTRANCE">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_157" name="information_checkbox_12_NA_157"
@@ -3068,7 +3034,7 @@
             <div class="second-radio">
                 <select name="Description_select_4_BATHROOM_123">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_158" name="information_checkbox_12_NA_158"
@@ -3082,7 +3048,7 @@
             <div class="second-radio">
                 <select name="Description_select_4_ELEVATOR_123">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_159" name="information_checkbox_12_NA_159"
@@ -3096,7 +3062,7 @@
             <div class="second-radio">
                 <select name="Description_select_4_HALLWAYS_123">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_160" name="information_checkbox_12_NA_160"
@@ -3110,7 +3076,7 @@
             <div class="second-radio">
                 <select name="Description_select_4_KITCHEN_123">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_161" name="information_checkbox_12_NA_161"
@@ -3125,7 +3091,7 @@
             <div class="second-radio">
                 <select name="Description_select_4_WATERFRONT_123">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_162" name="information_checkbox_12_NA_162"
@@ -3142,7 +3108,7 @@
                     <!-- <select id="other_sec_description_sele_1" onchange="other_sec_description_sele_1()"
                     name="Description_select_4_WATER_ACCESS_123"> -->
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
             </div>
             <div style="display: none;" id="other_sec_description_div_1">
@@ -3381,7 +3347,7 @@
             <div class="second-radio">
                 <select name="other_sec_description_COBRA_ZONE_select">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_165" name="information_checkbox_12_NA_165"
@@ -3395,7 +3361,7 @@
             <div class="second-radio">
                 <select name="other_sec_description_FEDERAL_FLOOD_INSURANCE_AVAILBLE_select">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_166" name="information_checkbox_12_NA_166"
@@ -3409,7 +3375,7 @@
             <div class="second-radio">
                 <select name="other_sec_description_PROPERTY_LOCATION_select">
                     <option value="Island ">Island </option>
-                    <option value="Mainland" >Mainland</option>
+                    <option value="Mainland" selected>Mainland</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_167" name="information_checkbox_12_NA_167"
@@ -3719,12 +3685,12 @@
                 <select id="other_sec_description_check_6_select_1" name="other_sec_description_check_6_select_1_GARAGE"
                     onchange="if(this.value =='yes'){document.getElementById('other_sec_description_check_6_select_2').style.display='block'}else{document.getElementById('other_sec_description_check_6_select_2').style.display='none'}">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
             </div>
             <div class="second-radio" id="other_sec_description_check_6_select_2" style="display: none;">
                 <select name="other_sec_description_check_6_select_1_GARAGE_select_garage">
-                    <option value="1" >1</option>
+                    <option value="1" selected>1</option>
                     <option value="2">2</option>
                     <option value="2.5">2.5</option>
                     <option value="3">3</option>
@@ -3747,12 +3713,12 @@
                 <select id="other_sec_description_check_7_select_1" name="other_sec_description_check_7_select_1"
                     onchange="if(this.value =='yes'){document.getElementById('other_sec_description_check_7_select_2').style.display='block'}else{document.getElementById('other_sec_description_check_7_select_2').style.display='none'}">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
             </div>
             <div class="second-radio" id="other_sec_description_check_7_select_2" style="display: none;">
                 <select name="other_sec_description_check_7_select_1_CARPORT_garage">
-                    <option value="1" >1</option>
+                    <option value="1" selected>1</option>
                     <option value="2">2</option>
                     <option value="2.5">2.5</option>
                     <option value="3">3</option>
@@ -3965,7 +3931,7 @@
             <div class="second-radio">
                 <select id="other_sec_description_textarea_3" name="other_sec_description_textarea_3"
                     onchange="if(this.value == 'other'){document.getElementById('other_sec_description_textarea_3_desc').style.display='block'}else{document.getElementById('other_sec_description_textarea_3_desc').style.display='none'}">
-                    <option value="first floor" >first floor</option>
+                    <option value="first floor" selected>first floor</option>
                     <option value="second floor">second floor</option>
                     <option value="other">other</option>
                 </select>
@@ -4780,7 +4746,7 @@
             <div class="second-radio">
                 <select id="next_2_other_text_select" name="next_2_other_text_select" onchange="next_2_other_text()">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
             </div>
             <div class="second-radio" id="next_2_other_text" style="display: none;">
@@ -4802,7 +4768,7 @@
             <div class="second-radio">
                 <select name="next_2_other_text_MEAN_HIGH_WATER_DEPTH">
                     <option value="yes">Yes</option>
-                    <option value="no" >No</option>
+                    <option value="no" selected>No</option>
                 </select>
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_199" name="information_checkbox_12_NA_199"
