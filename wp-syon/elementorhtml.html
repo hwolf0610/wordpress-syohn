@@ -387,7 +387,7 @@
                     <option value="Broker 6">Broker 6</option>
                 </select>
                 <input type="text" style="background: rgb(241, 241, 120);color: black;width: 100%;"
-                    name="broker_agent_borker_desctrip" />
+                    name="broker_agent_borker_desctrip" id="broker_agent_borker_desctrip" />
             </div>
 
             <div>
@@ -727,17 +727,17 @@
             <textarea id="Information_HOME_WARRANTY" disabled></textarea>
             <!-- FYI: Does the house come with a home warranty check yes or no. If yes give details. -->
             <div class="second-radio">
-                <select onchange="information_select_6_dropdownChanges2()" id="information_select_6">
+                <select onchange="information_select_6_dropdownChanges2()" id="information_select_6" name="information_select_6">
                     <option value="yes">Yes</option>
                     <option value="no" selected>No</option>
                 </select>
             </div>
             <div class="second-radio" id="information_select_6_textarea4" style="display:none;">
                 <textarea placeholder="Input information here about Time Remaining"
-                    name="information_txt_abt_time_Remaining"
+                    name="information_txt_abt_time_Remaining" id="information_txt_abt_time_Remaining"
                     style=" background: rgb(241, 241, 120);color: black;"></textarea>
                 <textarea placeholder="Input information here about Warranty Company"
-                    name="information_txt_abt_Warranty_Company"
+                    name="information_txt_abt_Warranty_Company" id="information_txt_abt_Warranty_Company"
                     style=" background: rgb(241, 241, 120);color: black;"></textarea>
             </div>
             <div class="second-radio">
