@@ -9,7 +9,7 @@
             type: 'GET', // type of the HTTP request
             success: function (result) {
                 //   var obj = jQuery.parseJSON(result);
-                console.log(result);
+                console.log("result:", result);
                 result.map((item, index) => {
                     var unit_symbol = item.property_address_UNIT1 ? "#" + item.property_address_UNIT1 : "";
                     price_show_var = "";
@@ -36,6 +36,7 @@
                     result.map((item, index) => {
                         if (item.home_id == home_id) {
                             localStorage.setItem("real_link_kind", item.home_seller_kind);
+                            localStorage.setItem("home_retail_regex_id", item.home_retail_regex_id);
                             window.location.href = "https://syohn.com/my-home-properties-detail-edit";
 
                         }
@@ -132,15 +133,15 @@
             font-weight: 900;
         }
 
-        @media(max-width: 600px) {
+        @media(max-width: 800px) {
             .home-description {
                 width: 100%;
             }
 
             .home-discover-container-style {
                 display: block !important;
-                width: 125%;
-                margin-left: -35px;
+                width: 100%;
+                margin: auto;
                 padding: 3px;
             }
 

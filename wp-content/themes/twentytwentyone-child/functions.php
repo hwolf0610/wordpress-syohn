@@ -307,6 +307,25 @@ function home_retail_image_dir( $dirs ) {
     // UPDATE `wp_hwolf__home_retail_photo_upload` SET `file_upload_EXTERIOR_LANDSCAPING` = '2222' WHERE `wp_hwolf__home_retail_photo_upload`.`home_id` = 1;
 
 
+    // ALTER TABLE `wp_hwolf__home_retail_information` ADD `next_other_check_41_heater` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `information_checkbox_12_NA_7`, ADD `information_select_6` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `next_other_check_41_heater`, ADD `information_select_7` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `information_select_6`;
+// http://localhost/wp-form/wp-json/home_retail/delete_a_recode_item_query
+add_action('rest_api_init', function () {
+  register_rest_route( 'home_retail', '/ALTER_a_recode_item_query', array(
+                'methods'  => 'POST',
+                'callback' => 'ALTER_a_recode_item_query'
+      ));
+});
+
+// UPDATE 'wp_hwolf__home_retail_address' SET 'property_address_street_address1' = '1111111' WHERE 'wp_hwolf__home_retail_address'.'home_id' = 1;
+function ALTER_a_recode_item_query($request){
+  global $wpdb;
+     $table_name_home_retail_information = $wpdb->prefix . '_home_retail_information';
+    //  $wpdb->query($wpdb->prepare("UPDATE '$table_name_home_retail_address' SET 'property_address_street_address1' = '212356 Log Angeles' WHERE '$table_name_home_retail_address'.'home_id' = 1"));
+     $wpdb->query($wpdb->prepare("ALTER TABLE `$table_name_home_retail_information` ADD `next_other_check_41_heater` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `information_checkbox_12_NA_7`, ADD `information_select_6` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `next_other_check_41_heater`, ADD `information_select_7` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `information_select_6`;"));
+     return "succee";
+}
+
+
 
     // "DELETE FROM `wp_hwolf__home_retail_photo_upload` WHERE `wp_hwolf__home_retail_photo_upload`.`home_id` = 2"
   //     "DROP TABLE 'wp-form'.'wp_hwolf_home_retail_instruction_blue_box'"?
@@ -584,7 +603,7 @@ function delete_blue_box_table($request) {
 
 
 
-
+  
 
 
 
@@ -661,6 +680,61 @@ function add_formdata_save_data($request) {
         // Your logic goes here.
         // echo $request;
         // return $message;
+}
+
+
+
+
+ // http://localhost/wp-form/wp-json/home_retail/update_home_seller_kind
+ add_action('rest_api_init', function () {
+  register_rest_route( 'home_retail', '/update_home_seller_kind',array(
+                'methods'  => 'GET',
+                'callback' => 'update_home_seller_kind'
+      ));
+});
+
+function update_home_seller_kind($request) {
+  global $wpdb;
+  $table_name_home_retail_instruction_blue_box = $wpdb->prefix . '_home_retail_instruction_blue_box';
+  $table_name_home_retail_information = $wpdb->prefix . '_home_retail_information';
+  $table_name_home_retail_type = $wpdb->prefix . '_home_retail_type';
+  $table_name_home_retail_address = $wpdb->prefix . '_home_retail_address';
+  $table_name_home_retail_instruction = $wpdb->prefix . '_home_retail_instruction';
+  $table_name_home_retail_photo_upload = $wpdb->prefix . '_home_retail_photo_upload';
+  $table_name_home_retail_broker = $wpdb->prefix . '_home_retail_broker';
+
+  $table_name_home_retail_description_1 = $wpdb->prefix . '_home_retail_description_1';
+  $table_name_home_retail_description_2 = $wpdb->prefix . '_home_retail_description_2';
+  $table_name_home_retail_description_3 = $wpdb->prefix . '_home_retail_description_3';
+  $table_name_home_retail_description_4 = $wpdb->prefix . '_home_retail_description_4';
+  $table_name_home_retail_description_5 = $wpdb->prefix . '_home_retail_description_5';
+  $table_name_home_retail_description_6 = $wpdb->prefix . '_home_retail_description_6';
+  $table_name_home_retail_description_7 = $wpdb->prefix . '_home_retail_description_7';
+  $table_name_home_retail_description_8 = $wpdb->prefix . '_home_retail_description_8';
+  $table_name_home_retail_description_9 = $wpdb->prefix . '_home_retail_description_9';
+  $table_name_home_retail_description_10 = $wpdb->prefix . '_home_retail_description_10';
+  $table_name_home_retail_description_11 = $wpdb->prefix . '_home_retail_description_11';
+
+  // $wpdb->query($wpdb->prepare("DROP TABLE $table_name_home_retail_instruction_blue_box "));
+
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_information` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_information`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_type` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_type`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_address` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_address`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_instruction` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_instruction`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_broker` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_broker`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_description_1` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_description_1`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_description_2` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_description_2`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_description_3` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_description_3`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_description_4` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_description_4`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_description_5` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_description_5`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_description_6` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_description_6`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_description_7` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_description_7`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_description_8` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_description_8`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_description_9` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_description_9`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_description_10` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_description_10`.`home_id` = 2;"));
+  $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_description_11` SET `home_seller_kind` = 'Broker' WHERE `$table_name_home_retail_description_11`.`home_id` = 2;"));
+
+  return "success";
 }
 
 ?>

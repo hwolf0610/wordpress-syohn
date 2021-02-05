@@ -53,11 +53,20 @@ function crudOperationsTable() {
     dbDelta($sql);
   }
 
+  //   CREATE TABLE Persons (
+//     ID int NOT NULL,
+//     LastName varchar(255) NOT NULL,
+//     FirstName varchar(255),
+//     Age int,
+//     PRIMARY KEY (Age),
+//     CONSTRAINT UC_Person UNIQUE (ID,LastName)
+// );
+
   $table_name_home_retail_broker = $wpdb->prefix . '_home_retail_broker';
   $sql = "CREATE TABLE `$table_name_home_retail_broker` (
 		`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`broker_agent_first_name` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`broker_agent_last_name` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -76,7 +85,8 @@ function crudOperationsTable() {
 		`broker_agent_seller_agreement_type_select` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`broker_agent_prospect_excemt_select` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`broker_agent_agreement_services_select` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-		PRIMARY KEY(home_id)
+		PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
 		) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_broker'") != $table_name_home_retail_broker) {
@@ -88,8 +98,11 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_information` (
 		`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		`next_other_check_41_heater` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`information_select_6` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`information_select_7` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`information_checkbox_41` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`information_select_5` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`information_select_5_textarea3` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -136,7 +149,8 @@ function crudOperationsTable() {
 		`information__txt5_abt_bd_monthly` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`information__txt5_abt_cpy_name` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
 		`information_checkbox_12_NA_7` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-		PRIMARY KEY(home_id)
+		PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
 		) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_information'") != $table_name_home_retail_information) {
@@ -148,7 +162,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_type` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Type_checkbox_11` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Type_checkbox_1_textarea` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -189,7 +203,8 @@ function crudOperationsTable() {
   `information_checkbox_12_NA_116` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_textarea_lease` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_117` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_type'") != $table_name_home_retail_type) {
@@ -201,7 +216,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_address` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `property_address_street_address1` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_118` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -259,7 +274,8 @@ function crudOperationsTable() {
   `information_checkbox_12_NA_144` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `PROPERTY_DESCRIPTION_year_built_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_145` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_address'") != $table_name_home_retail_address) {
@@ -271,7 +287,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_description_1` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Description_select_2` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Description_select_21` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
@@ -317,7 +333,8 @@ function crudOperationsTable() {
   `Description_select_PANTRY_width_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_143_001_4` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Description_select_MUDROOM_Length_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_description_1'") != $table_name_home_retail_description_1) {
@@ -329,7 +346,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_description_2` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Description_select_MUDROOM_Width_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_143_001_5` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -379,7 +396,8 @@ function crudOperationsTable() {
   `Description_select_CLOSET_2_Width_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_143_001_m_2` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Description_select_BEDROOM_3_Length_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_description_2'") != $table_name_home_retail_description_2) {
@@ -391,7 +409,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_description_3` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Description_select_BEDROOM_3_Width_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_143_001_m_3` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -441,7 +459,8 @@ function crudOperationsTable() {
   `Description_select_3_checkbox123218_textarea123` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Description_select_4_checkbox123123` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Description_select_4_checkbox12321123` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_description_3'") != $table_name_home_retail_description_3) {
@@ -453,7 +472,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_description_4` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Description_select_4_checkbox12322123` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Description_select_4_checkbox12323123` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -503,7 +522,8 @@ function crudOperationsTable() {
   `other_sec_description_check_221` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `other_sec_description_check_222` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `other_sec_description_check_223` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_description_4'") != $table_name_home_retail_description_4) {
@@ -515,7 +535,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_description_5` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `other_sec_description_check_224` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `other_sec_description_check_225` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -565,7 +585,8 @@ function crudOperationsTable() {
   `information_checkbox_12_NA_168` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `other_sec_description_SQUARE_FOOTAGE_HEATED` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_169` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_description_5'") != $table_name_home_retail_description_5) {
@@ -577,7 +598,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_description_6` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `other_sec_description_SQUARE_FOOTAGE_SEPARATE` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_170` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -627,7 +648,8 @@ function crudOperationsTable() {
   `other_sec_description_check_810_textarea` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_176` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `other_sec_description_check_9` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_description_6'") != $table_name_home_retail_description_6) {
@@ -639,7 +661,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_description_7` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `other_sec_description_check_91` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `other_sec_description_check_92` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -689,7 +711,8 @@ function crudOperationsTable() {
   `next_other_check_32` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_34` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_33` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_description_7'") != $table_name_home_retail_description_7) {
@@ -701,7 +724,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_description_8` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `next_other_check_33_textarea` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_186` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -751,7 +774,8 @@ function crudOperationsTable() {
   `next_other_check_67` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_68` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_69` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_description_8'") != $table_name_home_retail_description_8) {
@@ -763,7 +787,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_description_9` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `next_other_check_610` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_611` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -813,7 +837,8 @@ function crudOperationsTable() {
   `next_other_check_8` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_81` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_82` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_description_9'") != $table_name_home_retail_description_9) {
@@ -825,7 +850,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_description_10` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `next_other_check_83` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_other_check_84` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -875,7 +900,8 @@ function crudOperationsTable() {
   `next_2_other_text_MEAN_HIGH_WATER_DEPTH` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_199` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_2_other_check_1` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_description_10'") != $table_name_home_retail_description_10) {
@@ -887,7 +913,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_description_11` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `next_2_other_check_11` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_2_other_check_12` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -932,7 +958,8 @@ function crudOperationsTable() {
   `next_2_other_check_223` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_1101` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `next_2_other_check_223_textarea` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_description_11'") != $table_name_home_retail_description_11) {
@@ -944,7 +971,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_instruction` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `Instructions_checkbox_11` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Instructions_checkbox_12` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -979,7 +1006,8 @@ function crudOperationsTable() {
   `Distribution_checkbox_34` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Distribution_checkbox_35` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_1106` varchar(220) , 
-  PRIMARY KEY(home_id)
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_instruction'") != $table_name_home_retail_instruction) {
@@ -991,7 +1019,7 @@ function crudOperationsTable() {
   $sql = "CREATE TABLE `$table_name_home_retail_photo_upload` (
 	`home_id` int(220) NOT NULL AUTO_INCREMENT,
 		`home_seller_kind` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
-		`home_retail_regex_id` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+		`home_retail_regex_id` varchar(255) NOT NULL , 
 		`home_retail_user_information` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `pdf_document_upload` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
   `file_upload_EXTERIOR_LANDSCAPING` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
@@ -1016,7 +1044,9 @@ function crudOperationsTable() {
   `file_upload_INTERIOR_MASTER_CLOSET` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `file_upload_INTERIOR_OTHER` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `file_upload_PDF_DOCUMENTS_UPLOAD` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
-  PRIMARY KEY(home_id)
+  `file_upload_INTERIOR_MASTER_BATHROOM` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+  PRIMARY KEY(home_id),
+    UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_photo_upload'") != $table_name_home_retail_photo_upload) {
@@ -1168,6 +1198,7 @@ function addMenuHooks(){
 	add_submenu_page(null, 'delete_home_data_in_database', 'delete_home_data_in_database', 'manage_options', 'delete_home_data_in_database', 'hwolf0610_home_Data_delete'); 
   add_submenu_page('home_retail_dashboard', 'UPLOAD_INSTRUCTION', 'UPLOAD_INSTRUCTION', 'manage_options', 'UPLOAD_INSTRUCTION', 'HOME_Upload_Instruction_from'); 
   add_submenu_page('home_retail_dashboard', 'FILE_UPLOADER', 'FILE_UPLOADER', 'manage_options', 'FILE_UPLOADER', 'hwolf0610_FILE_UPLOAD_TESTER'); 
+  add_submenu_page('home_retail_dashboard', 'Check_Uploaded_Home_photo', 'Check_Uploaded_Home_photo', 'manage_options', 'Check_Uploaded_Home_photo', 'hwolf0610_Check_Uploaded_Home_photo'); 
 	// add_submenu_page('home_retail_dashboard', 'ADD_NEW_DATA', 'ADD_NEW_DATA', 'manage_options', 'ADD_NEW_DATA', 'hwolf0610_Data_create'); 
 	// add_submenu_page(null, 'UPDATE_DATA', 'update_data', 'manage_options', 'UPDATE_OWN_DATA', 'hwolf0610_Data_update'); 
 	// add_submenu_page(null, 'Test_get_data', 'Test_get_data', 'manage_options', 'Test_get_data', 'hwolf0610_Test_get_data'); 
@@ -1176,6 +1207,7 @@ function addMenuHooks(){
 define('ROOTDIR', plugin_dir_path(__FILE__));
 require_once(ROOTDIR . 'Home_Retail_Instruction_blue_box.php');
 require_once(ROOTDIR . 'file_uploader_tester.php');
+require_once(ROOTDIR . 'Check_Uploaded_Home_photo.php');
 
 
   //DATABASE CONTROLLER
@@ -1242,6 +1274,8 @@ require_once(ROOTDIR . 'file_uploader_tester.php');
     $file_upload_INTERIOR_MASTER_CLOSET=get_home_url()."/wp-content/uploads/home_retail_database/".$row->file_upload_INTERIOR_MASTER_CLOSET;
     $file_upload_INTERIOR_OTHER=get_home_url()."/wp-content/uploads/home_retail_database/".$row->file_upload_INTERIOR_OTHER;
 
+    $file_upload_PDF_URL=get_home_url()."/wp-content/uploads/home_retail_database/".$row->file_upload_PDF_DOCUMENTS_UPLOAD;
+
 		echo "<tr>";
 		echo "<td colspan='16'><span style='font-size: 30px;display: flex;justify-content: center;'><u >$row->home_id</u>&nbsp;&nbsp;&nbsp;$row->home_seller_kind</span></td></tr><tr>";
 		echo "<td>$row->property_address_country_select</td>";	
@@ -1260,7 +1294,7 @@ require_once(ROOTDIR . 'file_uploader_tester.php');
 		echo "<td>$row->next_other_check_83</td>";	
 		echo "<td>$row->next_2_other_check_11</td>";	
 		echo "<td>$row->Instructions_checkbox_11</td>";	
-		echo "<td>$row->file_upload_PDF_DOCUMENTS_UPLOAD</td></tr>";	
+		echo "<td><a href='$file_upload_PDF_URL' target='_blank'>PDF_Instruction</a></td></tr>";	
     echo"<tr>";
     echo "<td>$row->file_upload_EXTERIOR_LANDSCAPING <img src=$file_upload_EXTERIOR_LANDSCAPING style='width:50px;height:50px;'></td>";	
     echo "<td>$row->file_upload_EXTERIOR_HOUSE <img src=$file_upload_EXTERIOR_HOUSE style='width:50px;height:50px;'></td>";	

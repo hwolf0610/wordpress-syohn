@@ -10,14 +10,11 @@
                 console.log(result);
                 result.map((item, index) => {
                     document.getElementById("Photo_EXTERIOR").innerHTML = item.Photo_EXTERIOR;
-                    // document.getElementById("Photo_INTERIOR").innerHTML = item.Photo_INTERIOR;
-                    // document.getElementById("Document_PDF_s").innerHTML = item.Document_PDF_s;
+                    document.getElementById("Photo_INTERIOR").innerHTML = item.Photo_INTERIOR;
+                    document.getElementById("Document_PDF_s").innerHTML = item.Document_PDF_s;
                 })
             }
         });
-        // $(document).ready(function () {
-        //     $("#dropdown_file_kind").val('EXTERIOR').style.color = "red";
-        // });
     </script>
     <style>
         body {
@@ -150,7 +147,7 @@
             border: 3px;
             background: #133c55;
             color: white;
-            width: 155px;
+            width: 60px;
             text-align: center;
             display: flex;
             justify-content: center;
@@ -165,61 +162,136 @@
 <h1 style="text-align:center">UPLOAD HOME PHOTO</h1>
 <br />
 <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'photo_upload')">UPLOAD HOME PHOTO & PDF</button>
+    <button class="tablinks" onclick="openCity(event, 'photo_upload')">PHOTO UPLOAD</button>
+    <button class="tablinks" onclick="openCity(event, 'pdf_documents')">PDF DOCUMENTS</button>
 </div>
-<form method='post' action='https://syohn.com/wp-json/home_retail/upload_a_home_photo_pdf' name='myform123'
+
+<form method='post' action='https://syohn.com/wp-json/home_retail/upload_home_photos' name='myform123'
     enctype='multipart/form-data'>
     <!-- <input type="hidden" id="edit_my_properties_home_id" name="edit_my_properties_home_id"> -->
     <input type="hidden" id="home_seller_kind" name="home_seller_kind">
     <input type="hidden" id="home_retail_regex_id" name="home_retail_regex_id">
     <input type="hidden" id="home_retail_user_information" name="home_retail_user_information">
 
+    <!-- Tab 1 PHOTO UPLOAD -->
     <div id="photo_upload" class="tabcontent" style="padding: 25px;">
+        <h2>PHOTO UPLOAD </h2>
+        <h3>EXTERIOR</h3>
         <textarea id="Photo_EXTERIOR" disabled></textarea>
-
-        <select id="dropdown_file_kind" name="dropdown_file_kind">
-            <option value="EXTERIOR" disabled><span style="color: red;">EXTERIOR</span></option>
-            <option value="file_upload_EXTERIOR_LANDSCAPING" selected>LANDSCAPING</option>
-            <option value="file_upload_EXTERIOR_HOUSE">HOUSE</option>
-            <option value="file_upload_EXTERIOR_POOL">POOL</option>
-            <option value="file_upload_EXTERIOR_SHED">SHED</option>
-            <option value="file_upload_EXTERIOR_OTHER">OTHER</option>
-            <option value="INTERIOR" disabled><span style="color: red;">INTERIOR</span></option>
-            <option value="file_upload_INTERIOR_GARAGE">GARAGE</option>
-            <option value="file_upload_INTERIOR_MUD_ROOM">MUD ROOM</option>
-            <option value="file_upload_INTERIOR_LIVING_ROOM">LIVING ROOM</option>
-            <option value="file_upload_INTERIOR_DINING_ROOM">DINING ROOM</option>
-            <option value="file_upload_INTERIOR_FAMILY_ROOM">FAMILY ROOM</option>
-            <option value="file_upload_INTERIOR_MEDIA_ROOM">MEDIA ROOM</option>
-            <option value="file_upload_INTERIOR_BASEMENT_ROOM">BASEMENT</option>
-            <option value="file_upload_INTERIOR_KITCHEN_ROOM">KITCHEN</option>
-            <option value="file_upload_INTERIOR_PANTRY_ROOM">PANTRY</option>
-            <option value="file_upload_INTERIOR_HALF_BATH">HALF BATH</option>
-            <option value="file_upload_INTERIOR_OFFICE">OFFICE</option>
-            <option value="file_upload_INTERIOR_BEDROOMS">BEDROOMS</option>
-            <option value="file_upload_INTERIOR_BATHROOMS">BATHROOMS</option>
-            <option value="file_upload_INTERIOR_MASTER_BEDROOM">MASTER BEDROOM</option>
-            <option value="file_upload_INTERIOR_MASTER_BATHROOM">MASTER BATHROOM</option>
-            <option value="file_upload_INTERIOR_MASTER_CLOSET">MASTER CLOSET </option>
-            <option value="file_upload_INTERIOR_OTHER">OTHER</option>
-            <option value="PDF DOCUMENTS UPLOAD" disabled><span style="color: red;">PDF DOCUMENTS UPLOAD</span></option>
-            <option value="file_upload_PDF_DOCUMENTS_UPLOAD">PDF's</option>
-        </select>
         <div>
             <h4>LANDSCAPING </h4>
-            <input type="file" style="width: 100%;" name="upload_home_file">
+            <input type="file" style="width: 100%;" name="file_upload_EXTERIOR_LANDSCAPING">
             <!-- <label class="custom-file-label" for="customFile">Choose file</label> -->
+        </div>
+        <div>
+            <h4>HOUSE </h4>
+            <input type="file" style="width: 100%;" name="file_upload_EXTERIOR_HOUSE">
+        </div>
+        <div>
+            <h4>POOL </h4>
+            <input type="file" style="width: 100%;" name="file_upload_EXTERIOR_POOL">
+        </div>
+        <div>
+            <h4>SHED </h4>
+            <input type="file" style="width: 100%;" name="file_upload_EXTERIOR_SHED">
+        </div>
+        <div>
+            <h4>OTHER </h4>
+            <input type="file" style="width: 100%;" name="file_upload_EXTERIOR_OTHER">
+        </div>
+
+        <h3>INTERIOR</h3>
+        <textarea id="Photo_INTERIOR" disabled></textarea>
+        <div>
+            <h4>GARAGE </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_GARAGE">
+        </div>
+        <div>
+            <h4>MUD ROOM </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_MUD_ROOM">
+        </div>
+        <div>
+            <h4>LIVING ROOM </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_LIVING_ROOM">
+        </div>
+        <div>
+            <h4>DINING ROOM </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_DINING_ROOM">
+        </div>
+        <div>
+            <h4>FAMILY ROOM </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_FAMILY_ROOM">
+        </div>
+        <div>
+            <h4>MEDIA ROOM </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_MEDIA_ROOM">
+        </div>
+        <div>
+            <h4>BASEMENT </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_BASEMENT_ROOM">
+        </div>
+        <div>
+            <h4>KITCHEN </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_KITCHEN_ROOM">
+        </div>
+        <div>
+            <h4>PANTRY </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_PANTRY_ROOM">
+        </div>
+        <div>
+            <h4>HALF BATH </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_HALF_BATH">
+        </div>
+        <div>
+            <h4>OFFICE </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_OFFICE">
+        </div>
+        <div>
+            <h4>BEDROOMS </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_BEDROOMS">
+        </div>
+        <div>
+            <h4>BATHROOMS </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_BATHROOMS">
+        </div>
+        <div>
+            <h4>MASTER BEDROOM </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_MASTER_BEDROOM">
+        </div>
+        <div>
+            <h4>MASTER BATHROOM </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_MASTER_BATHROOM">
+        </div>
+        <div>
+            <h4>MASTER CLOSET </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_MASTER_CLOSET">
+        </div>
+        <div>
+            <h4>OTHER </h4>
+            <input type="file" style="width: 100%;" name="file_upload_INTERIOR_OTHER">
+        </div>
+
+        <div style="display: flex;justify-content: flex-end;margin-top: 30px;">
+            <a onclick="go_next_section(1, 'pdf_documents')" class="control-button-style"><span
+                    style="color: white;">Next</span></a>
+        </div>
+    </div>
+
+    <!-- Tab 2 PDF DOCUMENTS -->
+    <div id="pdf_documents" class="tabcontent" style="padding: 25px;">
+        <h2>PDF DOCUMENTS UPLOAD</h2>
+        <h3>PDF's</h3>
+        <textarea id="Document_PDF_s" name="pdf_document_upload"></textarea>
+        <input type="file" style="width: 100%;" name="file_upload_PDF_DOCUMENTS_UPLOAD">
+
+        <div style="display: flex;justify-content: flex-end;margin-top: 30px;">
+            <a onclick="go_next_section(0, 'photo_upload')" class="control-button-style"><span
+                    style="color: white;">Back</span></a>
         </div>
         <div style="display: flex;justify-content: center;">
             <input type="submit" value="SUBMIT" style="border-radius: 15px;background:#133c55;color: white; ">
         </div>
-
-        <div style="display: flex;justify-content: flex-end;margin-top: 30px;">
-            <a href="https://syohn.com/my-properties" class="control-button-style">
-                <span style="color: white;">Go My Properties Page</span></a>
-        </div>
     </div>
-
 
 </form>
 
@@ -227,10 +299,8 @@
     document.getElementById('home_retail_regex_id').value = localStorage.getItem("home_retail_regex_id");
     document.getElementById('home_retail_user_information').value = localStorage.getItem("home_retail_user_information");
     document.getElementById('home_seller_kind').value = localStorage.getItem("real_link_kind");
+    console.log("localStorage:", localStorage.getItem("home_retail_regex_id"));
 
-    console.log("home_retail_regex_id:", localStorage.getItem("home_retail_regex_id"));
-    console.log("home_retail_user_information:", localStorage.getItem("home_retail_user_information"));
-    console.log("home_seller_kind:", localStorage.getItem("real_link_kind"));
 
     document.getElementById('photo_upload').style.display = "block";
     default_tablink = document.getElementsByClassName("tablinks")
@@ -266,4 +336,5 @@
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
     }
+
 </script>

@@ -172,10 +172,11 @@
                     // var home_id = url.searchParams.get("home_id");
 
                     var edit_home_information_id = localStorage.getItem("edit_my_properties_home_id");
+                    var edit_home_retail_regex_id = localStorage.getItem("home_retail_regex_id");
 
-                    console.log(edit_home_information_id);
+                    console.log("edit_home_retail_regex_id:",edit_home_retail_regex_id);
                     result.map((item, index) => {
-                        if (item.home_id == edit_home_information_id) {
+                        if (item.home_retail_regex_id == edit_home_retail_regex_id) {
                             console.log("home_seller_kind:", item.home_seller_kind);
                             if (item.home_seller_kind == "Broker") {
                                 $("#visble_only_agent_out").css("display", "none");
@@ -198,6 +199,13 @@
                                 // default_tablink[1].toggleClass(default_tablink[1] + "active");
                                 window.scrollTo(0, 0);
                             }
+
+                            // console.log("home_id", localStorage.getItem("edit_my_properties_home_id"))
+
+                            $("#edit_my_properties_home_id").val(localStorage.getItem("edit_my_properties_home_id"));
+                            $("#home_seller_kind").val(item.home_seller_kind);
+                            $("#home_retail_regex_id").val(item.home_retail_regex_id);
+                            $("#home_retail_user_information").val(item.home_retail_user_information);
 
                             //Broker&Agents
                             $("#broker_agent_first_name").val(item.broker_agent_first_name);
@@ -1293,23 +1301,6 @@
             });
         });
 
-        // var home_retail_regex_id = "homeretail_" + Math.random() * 1000000000000000000;
-        // console.log("random", home_retail_regex_id);
-        // localStorage.setItem("home_retail_regex_id", home_retail_regex_id)
-        // localStorage.setItem("home_retail_user_information", home_retail_regex_id)
-
-        // document.getElementById("home_retail_regex_id").value = home_retail_regex_id;
-        // document.getElementById("home_retail_user_information").value = home_retail_regex_id;
-
-        // var url_string = window.location.href
-        // var url = new URL(url_string);
-        // var home_id = url.searchParams.get("send_value");
-        // console.log("home111_:", window.location.href)
-
-        // document.getElementById('home_seller_kind').value = localStorage.getItem("real_link_kind");
-        // console.log("localStorage:", localStorage.getItem("real_link_kind"));
-
-        // document.getElementById('datePicker').valueAsDate = new Date();
 
         window.ownerCount = 1
         window.full_bath = 1
@@ -1851,6 +1842,31 @@
             margin-left: 30px;
         }
 
+        .save-form-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 10px;
+            z-index: 100;
+            background: #133c55 !important;
+            color: white !important;
+        }
+        .upload-file-form-btn{
+            position: fixed;
+            bottom: 70px;
+            right: 10px;
+            z-index: 100;
+            background: #133c55 !important;
+            color: white !important;
+        }
+        @media(max-width:800px){
+            .save-form-btn {
+                width: 25% !important;
+            }
+            .upload-file-form-btnssss {
+                width: 25% !important;
+            }
+        }
+
         /* do not group these rules */
         *::-webkit-input-placeholder {
             color: black;
@@ -1900,11 +1916,16 @@
         <!-- <button class="tablinks" onclick="openCity(event, 'photo_upload')">PHOTO UPLOAD</button>
         <button class="tablinks" onclick="openCity(event, 'pdf_documents')">PDF DOCUMENTS</button> -->
     </div>
-    <form method="post" enctype='multipart/form-data' id="nameform">
+    <form action="https://syohn.com/wp-json/home_retail/update_uploaded_home_information_to_database" method="post" enctype='multipart/form-data' id="nameform">
+        <input type='submit' name="update" value='SAVE' class='save-form-btn button'>
+        <input type="hidden" id="edit_my_properties_home_id" name="edit_my_properties_home_id">
         <input type="hidden" id="home_seller_kind" name="home_seller_kind">
         <input type="hidden" id="home_retail_regex_id" name="home_retail_regex_id">
         <input type="hidden" id="home_retail_user_information" name="home_retail_user_information">
 
+        <a href="https://syohn.com/upload-home-photos"><input type='button' name="upload" value='Go File Upload Page' class='upload-file-form-btn button'></a>
+        
+        
         <!-- Tab 1 -->
         <div id="broker_agent" class="tabcontent" style="padding: 25px;">
             <div>
@@ -2078,8 +2099,7 @@
             <h3><b>PURCHASE OPTIONS </b> </h3>
             <textarea id="Information_PURCHASE_OPTIONS" disabled></textarea>
             <div class="second-radio">
-                <input type="checkbox" id="information_checkbox_11" name="information_checkbox_11" value="Sale" checked
-                    onchange="display_none_textarea()">
+                <input type="checkbox" id="information_checkbox_11" name="information_checkbox_11" value="Sale">
                 <label for="information_checkbox_11">Sale</label>
             </div>
             <div class="second-radio">
