@@ -2,8 +2,12 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <script type="text/javascript">
         $.ajax({
             url: 'https://syohn.com/wp-json/home_retail/get_data_from_database_information', // my php file
@@ -19,16 +23,46 @@
                     if (item.home_id == home_id) {
                         Top_title_home = "";
                         Top_title_home += item.property_address_city1 ? item.property_address_city1 : "";
-                        Top_title_home += item.property_address_state1 ? " " + item.property_address_state1 : "";
+                        Top_title_home += item.property_address_state1 ? "," + item.property_address_state1 : "";
                         if (item.information_checkbox_12_sale_price_textarea) {
-                                Top_title_home += " : Sale Price $" + item.information_checkbox_12_sale_price_textarea;
-                            } else {
-                                Top_title_home += item.Type_select_32_Broker_lease_textarea ? " : lease price $" + item.Type_select_32_Broker_lease_textarea + "(" + item.Type_select_32_Broker_lease + ")" : "";
-                            }
+                            Top_title_home += " : Sale Price $" + item.information_checkbox_12_sale_price_textarea;
+                        } else {
+                            Top_title_home += item.Type_select_32_Broker_lease_textarea ? " : lease price $" + item.Type_select_32_Broker_lease_textarea + "(" + item.Type_select_32_Broker_lease + ")" : "";
+                        }
                         document.getElementById('home_address_text').innerHTML = Top_title_home;
-                        // document.getElementById('home_owner_kind_text').innerHTML = item.home_seller_kind;
-                        var Image_src = "https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_EXTERIOR_LANDSCAPING;
-                        document.getElementById('home_discover_image').src = Image_src;
+                        document.getElementById('home_owner_kind_text').innerHTML = item.home_seller_kind;
+
+                        var carousel_innerHTML_value = "";
+                        carousel_innerHTML_value += item.file_upload_EXTERIOR_LANDSCAPING ? "<div class='item active'><img class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_EXTERIOR_LANDSCAPING + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_EXTERIOR_HOUSE ? "<div class='item '><img class='discover-image'  src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_EXTERIOR_HOUSE + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_EXTERIOR_POOL ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_EXTERIOR_POOL + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_EXTERIOR_SHED ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_EXTERIOR_SHED + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_EXTERIOR_OTHER ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_EXTERIOR_OTHER + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_GARAGE ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_GARAGE + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_MUD_ROOM ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_MUD_ROOM + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_LIVING_ROOM ? "<div class='item '><img class='discover-image'  src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_LIVING_ROOM + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_DINING_ROOM ? "<div class='item '><img class='discover-image'  src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_DINING_ROOM + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_FAMILY_ROOM ? "<div class='item '><img class='discover-image'  src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_FAMILY_ROOM + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_MEDIA_ROOM ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_MEDIA_ROOM + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_BASEMENT_ROOM ? "<div class='item '><img class='discover-image'  src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_BASEMENT_ROOM + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_KITCHEN_ROOM ? "<div class='item '><img class='discover-image'  src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_KITCHEN_ROOM + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_PANTRY_ROOM ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_PANTRY_ROOM + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_HALF_BATH ? "<div class='item '><img class='discover-image'  src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_HALF_BATH + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_OFFICE ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_OFFICE + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_BEDROOMS ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_BEDROOMS + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_BATHROOMS ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_BATHROOMS + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_MASTER_CLOSET ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_MASTER_CLOSET + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_MASTER_BEDROOM ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_MASTER_BEDROOM + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_MASTER_BATHROOM ? "<div class='item '><img  class='discover-image' src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_MASTER_BATHROOM + "' alt='Image None' style='width:100%;'></div>" : "";
+                        carousel_innerHTML_value += item.file_upload_INTERIOR_OTHER ? "<div class='item '><img class='discover-image'  src='https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_INTERIOR_OTHER + "' alt='Image None' style='width:100%;'></div>" : "";
+                        document.getElementById('carousel_image_contanier').innerHTML = carousel_innerHTML_value;
+
+                        // var carousel_image_contanier = document.getElementById('carousel_image_contanier');
+                        // <div class='item active'><img src='' alt='Los Angeles' style='width:100%;'></div>
+
+                        // var Image_src = "https://syohn.com/wp-content/uploads/home_retail_database/" + item.file_upload_EXTERIOR_LANDSCAPING;
+                        // document.getElementById('home_discover_image').src = Image_src;
+
                         // document.getElementById("home_discover_container_information").innerHTML += "<div class='text_style'>" + JSON.stringify(item) + "</div>";
                         if (!item.information_checkbox_12_NA_1) {
                             var information_purchase_option = "";
@@ -1288,8 +1322,9 @@
         .discover-image {
             width: 100% !important;
             height: 400px !important;
-            border-radius: 30px !important;
+            /* border-radius: 30px !important; */
             border: 5px;
+            margin: auto;
         }
 
         .section-sepeter {
@@ -1299,27 +1334,63 @@
             margin-top: 20px;
         }
 
+        .carousel-container-style {
+            margin-left: 80px;
+        }
+
         @media(max-width: 600px) {
             .discover-image {
                 height: 200px !important;
+            }
+
+            .carousel-container-style {
+                margin-left: 0px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div>
+    <div class="container">
         <div>
             <p id="home_address_text"></p>
             <p id="home_owner_kind_text"></p>
-            <img id="home_discover_image" class="discover-image">
+            <!-- <img id="home_discover_image" class="discover-image"> -->
+
+            <div class="carousel-container-style container ">
+                <!-- <h2>Carousel Example</h2> -->
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <!-- <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol> -->
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" id="carousel_image_contanier">
+
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
             <!-- <p>$429,900</p>
             <p>3bed  2bath  2,200sqft  3,920sqft lot</p>
             <p>21 Caldwell, Pittsboro, NC, 27312</p> -->
         </div>
         <!-- <div id="home_discover_container_information"></div> -->
         <div>
-            <h1 style="text-align: center;"> HOME PROPERTY INFORMATION</h1>
+            <h1 style="text-align: center;"> PROPERTY INFORMATION</h1>
             <hr />
             <div id="information_checkbox_11_purchase_option"></div>
             <hr />
@@ -1341,7 +1412,7 @@
         <div class="section-sepeter"></div>
 
         <div>
-            <h1 style="text-align: center;"> HOME PROPERTY TYPE</h1>
+            <h1 style="text-align: center;"> PROPERTY TYPE</h1>
             <hr />
             <div id="Type_PROPERTY_CATEGORY_1"></div>
             <hr />
@@ -1383,7 +1454,7 @@
         <div class="section-sepeter"></div>
 
         <div>
-            <h1 style="text-align: center;"> HOME PROPERTY ADDRESS</h1>
+            <h1 style="text-align: center;"> PROPERTY ADDRESS</h1>
             <hr />
             <div id="ADDRESS_STREET_ADDRESS"></div>
             <hr />
@@ -1432,7 +1503,7 @@
         <div class="section-sepeter"></div>
 
         <div>
-            <h1 style="text-align: center;"> HOME PROPERTY DESCRIPTION</h1>
+            <h1 style="text-align: center;"> PROPERTY DESCRIPTION</h1>
             <hr />
             <div id="Description_PROPERTY_TAG_LINE"></div>
             <hr />
@@ -1556,7 +1627,7 @@
         <div class="section-sepeter"></div>
 
         <div>
-            <h1 style="text-align: center;"> HOME SHOWING INSTRUCTIONS</h1>
+            <h1 style="text-align: center;"> SHOWING INSTRUCTIONS</h1>
             <hr />
             <div id="Instruction_SHOWING_INSTRUCTIONS"></div>
             <hr />
