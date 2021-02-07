@@ -19,6 +19,18 @@ function crudOperationsTable() {
   global $wpdb;
   $charset_collate = $wpdb->get_charset_collate();
 
+  $table_name_home_retail_file_name_changer = $wpdb->prefix . '_home_retail_file_name_changer';
+  $sql = "CREATE TABLE `$table_name_home_retail_file_name_changer` (
+		`home_id` int(220) NOT NULL AUTO_INCREMENT,
+		`file1` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,
+		PRIMARY KEY(home_id)
+		) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  ";
+  if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_home_retail_file_name_changer'") != $table_name_home_retail_file_name_changer) {
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
+  }
+
   $table_name_home_retail_File_uploader_test = $wpdb->prefix . '_home_retail_Multi_File_uploader';
   $sql = "CREATE TABLE `$table_name_home_retail_File_uploader_test` (
 		`home_id` int(220) NOT NULL AUTO_INCREMENT,
@@ -1199,6 +1211,7 @@ function addMenuHooks(){
   add_submenu_page('home_retail_dashboard', 'UPLOAD_INSTRUCTION', 'UPLOAD_INSTRUCTION', 'manage_options', 'UPLOAD_INSTRUCTION', 'HOME_Upload_Instruction_from'); 
   add_submenu_page('home_retail_dashboard', 'FILE_UPLOADER', 'FILE_UPLOADER', 'manage_options', 'FILE_UPLOADER', 'hwolf0610_FILE_UPLOAD_TESTER'); 
   add_submenu_page('home_retail_dashboard', 'Check_Uploaded_Home_photo', 'Check_Uploaded_Home_photo', 'manage_options', 'Check_Uploaded_Home_photo', 'hwolf0610_Check_Uploaded_Home_photo'); 
+  add_submenu_page('home_retail_dashboard', 'upload_file_name_change', 'upload_file_name_change', 'manage_options', 'upload_file_name_change', 'hwolf0610_upload_file_name_change'); 
 	// add_submenu_page('home_retail_dashboard', 'ADD_NEW_DATA', 'ADD_NEW_DATA', 'manage_options', 'ADD_NEW_DATA', 'hwolf0610_Data_create'); 
 	// add_submenu_page(null, 'UPDATE_DATA', 'update_data', 'manage_options', 'UPDATE_OWN_DATA', 'hwolf0610_Data_update'); 
 	// add_submenu_page(null, 'Test_get_data', 'Test_get_data', 'manage_options', 'Test_get_data', 'hwolf0610_Test_get_data'); 
@@ -1208,7 +1221,7 @@ define('ROOTDIR', plugin_dir_path(__FILE__));
 require_once(ROOTDIR . 'Home_Retail_Instruction_blue_box.php');
 require_once(ROOTDIR . 'file_uploader_tester.php');
 require_once(ROOTDIR . 'Check_Uploaded_Home_photo.php');
-
+require_once(ROOTDIR . 'change_file_name_on_upload.php');
 
   //DATABASE CONTROLLER
   function hwolf0610_database_controller(){

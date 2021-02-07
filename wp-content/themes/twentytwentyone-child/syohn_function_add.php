@@ -695,7 +695,6 @@ add_action('rest_api_init', function () {
     
     global $wpdb;		    
     $table_name_home_retail_photo_upload = $wpdb->prefix . '_home_retail_photo_upload';
-    $file_name = $_FILES['upload_home_file']['name'];
     $database_key = $request['dropdown_file_kind'];
     $regax_id = $request['home_retail_regex_id'];
     
@@ -709,12 +708,18 @@ add_action('rest_api_init', function () {
     // }
 
     // $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_photo_upload` SET `$request['dropdown_file_kind']` = '$_FILES['upload_home_file']['name']' WHERE `$table_name_home_retail_photo_upload`.`home_retail_regex_id` = `$request['home_retail_regex_id']`;"));
-    $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_photo_upload` SET `$database_key` = '$file_name' WHERE `$table_name_home_retail_photo_upload`.`home_id` = $get_home_id;"));
+    $file_name = $_FILES['upload_home_file']['name'];
+    $date = new DateTime();
+    $name = $_FILES["upload_home_file"]["name"];
+    $ext = end((explode(".", $name))); # extra () to prevent notice
+    $my_custom_filename = "added_".uniqid().$date->getTimestamp().".".$ext; 
+    $wpdb->query($wpdb->prepare("UPDATE `$table_name_home_retail_photo_upload` SET `$database_key` = '$my_custom_filename' WHERE `$table_name_home_retail_photo_upload`.`home_id` = $get_home_id;"));
 
     if($_FILES['upload_home_file']['name'] != ''){
-    $uploadedfile = $_FILES['upload_home_file'];
-    $upload_overrides = array( 'test_form' => false );
-    wp_handle_upload( $uploadedfile, $upload_overrides );    
+    // $uploadedfile = $_FILES['upload_home_file'];
+    // $upload_overrides = array( 'test_form' => false );
+    // wp_handle_upload( $uploadedfile, $upload_overrides );   
+    wp_upload_bits($my_custom_filename , null, file_get_contents($_FILES['upload_home_file']['tmp_name']));
     }        
 
     header("Location: https://syohn.com/upload-home-photos"); 
