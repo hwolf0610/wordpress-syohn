@@ -286,6 +286,8 @@ function crudOperationsTable() {
   `information_checkbox_12_NA_144` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `PROPERTY_DESCRIPTION_year_built_input` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `information_checkbox_12_NA_145` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+  `property_address_geo_long_GPS_LOCATION_LIN` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+  `information_checkbox_12_NA_124_GPS_LOCATION_LIN` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   PRIMARY KEY(home_id),
     UNIQUE (home_retail_regex_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -1188,6 +1190,7 @@ function crudOperationsTable() {
   `Photo_EXTERIOR` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Photo_INTERIOR` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
   `Document_PDF_s` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci , 
+  `gps_geo_location` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci ,  
   PRIMARY KEY(home_id)
   ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
   ";

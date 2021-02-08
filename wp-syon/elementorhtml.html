@@ -148,13 +148,85 @@
                     document.getElementById("listin_SELLER_OPT_IN").innerHTML = item.listin_SELLER_OPT_IN;
                     document.getElementById("listin_OUTSIDE_DISTRIBUTION").innerHTML = item.listin_OUTSIDE_DISTRIBUTION;
                     document.getElementById("Instruction_SUBMIT_BUTTON").innerHTML = item.Instruction_SUBMIT_BUTTON;
-
+                    document.getElementById("ADDRESS_GEO_LONG_GPS_LOCATION_LINK").innerHTML = item.gps_geo_location;
+                    
                     // document.getElementById("Photo_EXTERIOR").innerHTML = item.Photo_EXTERIOR;
                     // document.getElementById("Photo_INTERIOR").innerHTML = item.Photo_INTERIOR;
                     // document.getElementById("Document_PDF_s").innerHTML = item.Document_PDF_s;
                 })
             }
         });
+
+        //    get current GEO Location 
+        // var property_address_geo_lat = document.getElementById("property_address_geo_lat");
+        // var property_address_geo_long = document.getElementById("property_address_geo_long");
+
+        // function getLocation() {
+        //     if (navigator.geolocation) {
+        //         navigator.geolocation.getCurrentPosition(showPosition);
+        //     } else {
+        //         property_address_geo_lat.innerHTML = "Geolocation is not supported by this browser.";
+        //         property_address_geo_long.innerHTML = "Geolocation is not supported by this browser.";
+        //     }
+        // }
+
+        // function showPosition(position) {
+        //     property_address_geo_lat.innerHTML = position.coords.latitude;
+        //     property_address_geo_long.innerHTML =  position.coords.longitude;
+        // }
+        // getLocation();
+
+        $(document).ready(function () {
+            var property_address_geo_lat = document.getElementById("property_address_geo_lat");
+            var property_address_geo_long = document.getElementById("property_address_geo_long");
+
+            // if (navigator.geolocation) {
+            //     navigator.geolocation.getCurrentPosition(showPosition);
+            // } else {
+            //     property_address_geo_lat.innerHTML = "Geolocation is not supported by this browser.";
+            //     property_address_geo_long.innerHTML = "Geolocation is not supported by this browser.";
+            // }
+            // function showPosition(position) {
+            //     property_address_geo_lat.innerHTML = position.coords.latitude;
+            //     property_address_geo_long.innerHTML = position.coords.longitude;
+            // }
+
+            // for safari browser 
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                property_address_geo_lat.innerHTML = "Geolocation is not supported by this browser.";
+                property_address_geo_long.innerHTML = "Geolocation is not supported by this browser.";
+            }
+
+            function showPosition(position) {
+                property_address_geo_lat.innerHTML = position.coords.latitude;
+                property_address_geo_long.innerHTML = position.coords.longitude;
+            }
+
+            function showError(error) {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        x.innerHTML = "User denied the request for Geolocation."
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        x.innerHTML = "Location information is unavailable."
+                        break;
+                    case error.TIMEOUT:
+                        x.innerHTML = "The request to get user location timed out."
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        x.innerHTML = "An unknown error occurred."
+                        break;
+                }
+            }
+
+
+
+
+
+        });
+
     </script>
     <style>
         body {
@@ -357,13 +429,13 @@
             <div>
                 <h1> Broker/Agent </h1>
                 <textarea id="Broker_Broker_Agent" disabled></textarea>
-                <input type="text" placeholder="First Name " name="broker_agent_first_name" id="broker_agent_first_name"
+                <input type="text" placeholder="First Name " name="broker_agent_first_name"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" />
-                <input type="text" placeholder="Last Name " name="broker_agent_last_name" id="broker_agent_last_name"
+                <input type="text" placeholder="Last Name " name="broker_agent_last_name"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" />
-                <input type="text" placeholder="Phone " name="broker_agent_phone" id="broker_agent_phone"
+                <input type="text" placeholder="Phone " name="broker_agent_phone"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" />
-                <input type="text" placeholder="Email " name="broker_agent_email" id="broker_agent_email"
+                <input type="text" placeholder="Email " name="broker_agent_email"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" />
             </div>
 
@@ -371,14 +443,14 @@
                 <h3>Co-Listing Agent</h3>
                 <textarea id="Broker_Co_Listing_Agent" disabled></textarea>
                 <input type="text" placeholder="Type in Co-Listing Agents Real Estate Agency name"
-                    name="broker_agent_co_listing_agent" id="broker_agent_co_listing_agent"
+                    name="broker_agent_co_listing_agent"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" />
             </div>
 
             <div>
                 <h3>Broker</h3>
                 <textarea id="Broker_Broker" disabled></textarea>
-                <select name="broker_agent_broker_select" id="broker_agent_broker_select">
+                <select name="broker_agent_broker_select">
                     <option value="Broker 1" selected>Broker 1</option>
                     <option value="Broker 2">Broker 2</option>
                     <option value="Broker 3">Broker 3</option>
@@ -387,14 +459,14 @@
                     <option value="Broker 6">Broker 6</option>
                 </select>
                 <input type="text" style="background: rgb(241, 241, 120);color: black;width: 100%;"
-                    name="broker_agent_borker_desctrip" id="broker_agent_borker_desctrip" />
+                    name="broker_agent_borker_desctrip" />
             </div>
 
             <div>
                 <h3><b>Listing Date</b></h3>
                 <textarea id="Broker_Listing_Date" disabled></textarea>
                 <div class="second-radio">
-                    <input type="date" name="broker_agent_listing_date" class="form-control" id="broker_agent_listing_date" />
+                    <input type="date" name="broker_agent_listing_date" class="form-control" id="datePicker" />
                     <!-- <select name="broker_agent_listing_date">
                         <option value="Agency 1" selected>1/21/2021</option>
                         <option value="Agency 2">Agency 2</option>
@@ -412,7 +484,7 @@
                 <!-- <input type="text" placeholder="Selling Agent Type in number" name="broker_agent_selling_commission"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" /> -->
                 <h4>Listing Agent Percentage</h4>
-                <select name="broker_agent_selling_commission_percentage" id="broker_agent_selling_commission_percentage">
+                <select name="broker_agent_selling_commission_percentage">
                     <option value="0.5%" selected>0%</option>
                     <option value="0.5%">0.5%</option>
                     <option value="1%">1%</option>
@@ -430,7 +502,7 @@
                 <!-- <input type="text" placeholder="Co-Listing Agent  Type in number" name="broker_agent_type_in_number"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" /> -->
                 <h4>Co-Listing Agent Percentage</h4>
-                <select name="broker_agent_type_in_number_percentage" id="broker_agent_type_in_number_percentage">
+                <select name="broker_agent_type_in_number_percentage">
                     <option value="0.5%" selected>0%</option>
                     <option value="0.5%">0.5%</option>
                     <option value="1%">1%</option>
@@ -473,7 +545,7 @@
                 <h3><b>Sellers Agreement Type</b></h3>
                 <textarea id="Broker_Sellers_Agreement_Type" disabled></textarea>
                 <div class="second-radio">
-                    <select name="broker_agent_seller_agreement_type_select" id="broker_agent_seller_agreement_type_select">
+                    <select name="broker_agent_seller_agreement_type_select">
                         <option value="Exclusive Right To Sell" selected>Exclusive Right To Sell</option>
                         <option value="Exclusive Agency">Exclusive Agency</option>
                         <option value="Open Listing Agreement">Open Listing Agreement</option>
@@ -486,7 +558,7 @@
                 <h3><b>Prospect Exempt</b></h3>
                 <textarea id="Broker_Prospect_Exempt" disabled></textarea>
                 <div class="second-radio">
-                    <select name="broker_agent_prospect_excemt_select" id="broker_agent_prospect_excemt_select">
+                    <select name="broker_agent_prospect_excemt_select">
                         <option value="yes">Yes</option>
                         <option value="no" selected>No</option>
                     </select>
@@ -497,7 +569,7 @@
                 <h3><b>Agreement Services</b></h3>
                 <textarea id="Broker_Agreement_Services" disabled></textarea>
                 <div class="second-radio">
-                    <select name="broker_agent_agreement_services_select" id="broker_agent_agreement_services_select">
+                    <select name="broker_agent_agreement_services_select">
                         <option value="Full Service">Full Service</option>
                         <option value="Limited Service" selected>Limited Service</option>
                     </select>
@@ -610,7 +682,7 @@
                 <!-- <input type="text" placeholder="Type in number" name="information_Buying_Agent_Commi_des"
                     style="background: rgb(241, 241, 120);color: black;width: 100%;" /> -->
                 <h4>Percentage</h4>
-                <select name="information_Buying_Agent_Commi_des_sct" id="information_Buying_Agent_Commi_des_sct">
+                <select name="information_Buying_Agent_Commi_des_sct">
                     <option value="0.5%" selected>0%</option>
                     <option value="0.5%">0.5%</option>
                     <option value="1%">1%</option>
@@ -727,17 +799,17 @@
             <textarea id="Information_HOME_WARRANTY" disabled></textarea>
             <!-- FYI: Does the house come with a home warranty check yes or no. If yes give details. -->
             <div class="second-radio">
-                <select onchange="information_select_6_dropdownChanges2()" id="information_select_6" name="information_select_6">
+                <select onchange="information_select_6_dropdownChanges2()" id="information_select_6">
                     <option value="yes">Yes</option>
                     <option value="no" selected>No</option>
                 </select>
             </div>
             <div class="second-radio" id="information_select_6_textarea4" style="display:none;">
                 <textarea placeholder="Input information here about Time Remaining"
-                    name="information_txt_abt_time_Remaining" id="information_txt_abt_time_Remaining"
+                    name="information_txt_abt_time_Remaining"
                     style=" background: rgb(241, 241, 120);color: black;"></textarea>
                 <textarea placeholder="Input information here about Warranty Company"
-                    name="information_txt_abt_Warranty_Company" id="information_txt_abt_Warranty_Company"
+                    name="information_txt_abt_Warranty_Company"
                     style=" background: rgb(241, 241, 120);color: black;"></textarea>
             </div>
             <div class="second-radio">
@@ -749,7 +821,7 @@
             <h3><b>TERMITE BOND</b></h3>
             <textarea id="Information_TERMITE_BOND" disabled></textarea>
             <div class="second-radio">
-                <select onchange="information_select_7_dropdownChanges3()" id="information_select_7" name="information_select_7">
+                <select onchange="information_select_7_dropdownChanges3()" id="information_select_7">
                     <option value="yes">Yes</option>
                     <option value="no" selected>No</option>
                 </select>
@@ -1415,7 +1487,7 @@
                 <h3>GEO LAT</h3>
                 <textarea id="ADDRESS_GEO_LAT" disabled></textarea>
                 <textarea style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"
-                    name="property_address_geo_lat" placeholder="GEO Lat"></textarea>
+                    id="property_address_geo_lat" name="property_address_geo_lat" placeholder="GEO Lat"></textarea>
                 <!-- <input type="text" style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;" placeholder="GEO Lat"> -->
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_123" name="information_checkbox_12_NA_123"
@@ -1426,13 +1498,25 @@
                 <h3>GEO LONG</h3>
                 <textarea id="ADDRESS_GEO_LONG" disabled></textarea>
                 <textarea style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"
-                    name="property_address_geo_long" placeholder="GEO Long"></textarea>
+                    id="property_address_geo_long" name="property_address_geo_long" placeholder="GEO Long"></textarea>
                 <!-- <input type="text" style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;" placeholder="GEO Long"> -->
                 <div class="second-radio">
                     <input type="checkbox" id="information_checkbox_12_NA_124" name="information_checkbox_12_NA_124"
                         value="dewey">
                     <label for="information_checkbox_12_NA_124">N/A or Don’t Know</label>
                 </div>
+
+                <h3>GPS LOCATION LINK</h3>
+                <textarea id="ADDRESS_GEO_LONG_GPS_LOCATION_LINK" disabled></textarea>
+                <textarea style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;"
+                    id="property_address_geo_long_GPS_LOCATION_LIN" name="property_address_geo_long_GPS_LOCATION_LIN" placeholder="GPS LOCATION LINK"></textarea>
+                <!-- <input type="text" style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;" placeholder="GEO Long"> -->
+                <div class="second-radio">
+                    <input type="checkbox" id="information_checkbox_12_NA_124_GPS_LOCATION_LIN" name="information_checkbox_12_NA_124_GPS_LOCATION_LIN"
+                        value="dewey">
+                    <label for="information_checkbox_12_NA_124_GPS_LOCATION_LIN">N/A or Don’t Know</label>
+                </div>
+                
             </div>
 
             <div class="second-radio">

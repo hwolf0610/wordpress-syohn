@@ -8,7 +8,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+    <!-- <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYaU1NrbfqdsJ9JKS2FNBOKJ29VbGfYrk&callback=Show_google_Map"></script> -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCYaU1NrbfqdsJ9JKS2FNBOKJ29VbGfYrk"></script>
+
     <script type="text/javascript">
+        let gps_location = "";
         $.ajax({
             url: 'https://syohn.com/wp-json/home_retail/get_data_from_database_information', // my php file
             type: 'GET', // type of the HTTP request
@@ -22,14 +28,17 @@
                 result.map((item, index) => {
                     if (item.home_id == home_id) {
                         Top_title_home = "";
+                        Top_title_home_price = "";
                         Top_title_home += item.property_address_city1 ? item.property_address_city1 : "";
                         Top_title_home += item.property_address_state1 ? "," + item.property_address_state1 : "";
+
                         if (item.information_checkbox_12_sale_price_textarea) {
-                            Top_title_home += " : Sale Price $" + item.information_checkbox_12_sale_price_textarea;
+                            Top_title_home_price += "Sale Price $" + item.information_checkbox_12_sale_price_textarea;
                         } else {
-                            Top_title_home += item.Type_select_32_Broker_lease_textarea ? " : lease price $" + item.Type_select_32_Broker_lease_textarea + "(" + item.Type_select_32_Broker_lease + ")" : "";
+                            Top_title_home_price += item.Type_select_32_Broker_lease_textarea ? "lease price $" + item.Type_select_32_Broker_lease_textarea + "(" + item.Type_select_32_Broker_lease + ")" : "";
                         }
                         document.getElementById('home_address_text').innerHTML = Top_title_home;
+                        document.getElementById('Top_title_home_price').innerHTML = Top_title_home_price;
                         document.getElementById('home_owner_kind_text').innerHTML = item.home_seller_kind;
 
                         var carousel_innerHTML_value = "";
@@ -226,17 +235,17 @@
                             document.getElementById('Type_TOTAL_REAL_ESTATE_PROPERTY_TAX').innerHTML = "<h4>TOTAL REAL ESTATE PROPERTY TAX</h4>" + Type_TOTAL_REAL_ESTATE_PROPERTY_TAX;
                         }
 
-                        if (!item.information_checkbox_12_NA_115) {
-                            var Type_SALE_PRICE = "";
-                            Type_SALE_PRICE += item.information_checkbox_12_sale_price_textarea ? item.information_checkbox_12_sale_price_textarea : "";
-                            document.getElementById('Type_SALE_PRICE').innerHTML = "<h4>SALE PRICE</h4>" + Type_SALE_PRICE;
-                        }
+                        // if (!item.information_checkbox_12_NA_115) {
+                        //     var Type_SALE_PRICE = "";
+                        //     Type_SALE_PRICE += item.information_checkbox_12_sale_price_textarea ? item.information_checkbox_12_sale_price_textarea : "";
+                        //     document.getElementById('Type_SALE_PRICE').innerHTML = "<h4>SALE PRICE</h4>" + Type_SALE_PRICE;
+                        // }
 
-                        if (!item.information_checkbox_12_NA_116) {
-                            var Type_LEASE_PRICE = "";
-                            Type_LEASE_PRICE += item.Type_select_32_Broker_lease ? item.Type_select_32_Broker_lease : "";
-                            document.getElementById('Type_LEASE_PRICE').innerHTML = "<h4>LEASE PRICE</h4>" + Type_LEASE_PRICE;
-                        }
+                        // if (!item.information_checkbox_12_NA_116) {
+                        //     var Type_LEASE_PRICE = "";
+                        //     Type_LEASE_PRICE += item.Type_select_32_Broker_lease ? item.Type_select_32_Broker_lease : "";
+                        //     document.getElementById('Type_LEASE_PRICE').innerHTML = "<h4>LEASE PRICE</h4>" + Type_LEASE_PRICE;
+                        // }
 
                         if (!item.information_checkbox_12_NA_117) {
                             var Type_LEASE_GROSS_YEARLY_INCOME = "";
@@ -276,18 +285,6 @@
                             var ADDRESS_ZIP_CODE = "";
                             ADDRESS_ZIP_CODE += item.property_address_zip_code1 ? item.property_address_zip_code1 : "";
                             document.getElementById('ADDRESS_ZIP_CODE').innerHTML = "<h4>ZIP CODE</h4>" + ADDRESS_ZIP_CODE;
-                        }
-
-                        if (!item.information_checkbox_12_NA_123) {
-                            var ADDRESS_GEO_LAT = "";
-                            ADDRESS_GEO_LAT += item.property_address_geo_lat ? item.property_address_geo_lat : "";
-                            document.getElementById('ADDRESS_GEO_LAT').innerHTML = "<h4>GEO LAT</h4>" + ADDRESS_GEO_LAT;
-                        }
-
-                        if (!item.information_checkbox_12_NA_124) {
-                            var ADDRESS_GEO_LONG = "";
-                            ADDRESS_GEO_LONG += item.property_address_geo_long ? item.property_address_geo_long : "";
-                            document.getElementById('ADDRESS_GEO_LONG').innerHTML = "<h4>GEO LONG</h4>" + ADDRESS_GEO_LONG;
                         }
 
                         if (!item.information_checkbox_12_NA_126) {
@@ -1245,13 +1242,109 @@
                             document.getElementById('listin_OUTSIDE_DISTRIBUTION').innerHTML = "<h4> OUTSIDE DISTRIBUTION</h4>" + listin_OUTSIDE_DISTRIBUTION;
                         }
 
+                        var lat_value = 0;
+                        var long_value = 0;
+                        if (!item.information_checkbox_12_NA_124_GPS_LOCATION_LIN) {
+                            var property_address_geo_long_GPS_LOCATION_LIN = "";
+                            property_address_geo_long_GPS_LOCATION_LIN += item.property_address_geo_long_GPS_LOCATION_LIN ? item.property_address_geo_long_GPS_LOCATION_LIN : "";
+                            if (item.property_address_geo_long_GPS_LOCATION_LIN) {
+                                gps_location += item.property_address_geo_long_GPS_LOCATION_LIN ? item.property_address_geo_long_GPS_LOCATION_LIN : "";
+                                document.getElementById('get_geo_location_from_database').innerHTML = "<h4>GEO Location</h4><div  style=' word-wrap: break-word;'><a href='" + gps_location + "' target='_blank'>" + gps_location + "</a></div>";
 
+                                // var str = "https://www.google.com/maps/place/100+Manning+Dr,+Chapel+Hill,+NC+27514/@35.905151,-79.0524843,17z/data=!4m5!3m4!1s0x89acc2efa4d7cfa9:0x47ba4eef0885a757!8m2!3d35.9052172!4d-79.0508267?hl=en-US";
+                                var str = item.property_address_geo_long_GPS_LOCATION_LIN;
+                                var res = str.split("@");
+                                var res_2 = res[1].split("data");
+                                var res_3 = res_2[0].split(",");
+
+                                lat_value = parseInt(res_3[0]);
+                                long_value = parseInt(res_3[1]);
+                                draw_google_map(lat_value, long_value);
+                            } else {
+                                gps_location += item.property_address_geo_lat ? "LAT: " + item.property_address_geo_lat + "<br/>" : "";
+                                gps_location += item.property_address_geo_long ? "LONG: " + item.property_address_geo_long : "";
+                                document.getElementById('get_geo_location_from_database').innerHTML = "<h4>GEO Location</h4><div style=' word-wrap: break-word;'>" + gps_location + "</div>";
+
+                                lat_value = parseInt(item.property_address_geo_lat);
+                                long_value = parseInt(item.property_address_geo_long);
+                                draw_google_map(lat_value, long_value);
+                            }
+                        } else {
+                            if (!item.information_checkbox_12_NA_123) {
+                                var ADDRESS_GEO_LAT = "";
+                                ADDRESS_GEO_LAT += item.property_address_geo_lat ? item.property_address_geo_lat : "";
+                                // document.getElementById('ADDRESS_GEO_LAT').innerHTML = "<h4>GEO LAT</h4>" + ADDRESS_GEO_LAT;
+                            }
+
+                            if (!item.information_checkbox_12_NA_124) {
+                                var ADDRESS_GEO_LONG = "";
+                                ADDRESS_GEO_LONG += item.property_address_geo_long ? item.property_address_geo_long : "";
+                                // document.getElementById('ADDRESS_GEO_LONG').innerHTML = "<h4>GEO LONG</h4>" + ADDRESS_GEO_LONG;
+                            }
+                            document.getElementById('get_geo_location_from_database').innerHTML = "<h4>GEO Location</h4><div style=' word-wrap: break-word;'>" + gps_location + "</div>";
+
+                            lat_value = parseInt(item.property_address_geo_lat);
+                            long_value = parseInt(item.property_address_geo_long);
+                            draw_google_map(lat_value, long_value);
+                        }
 
                     }
                 })
             }
         });
+
+        function draw_google_map(lat_value, long_value) {
+            const uluru = { lat: lat_value, lng: long_value };
+            // const uluru = { lat: 36.778259, lng: -119.417931 };
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("googleMap"), {
+                zoom: 4,
+                center: uluru,
+            });
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+            // https://www.google.com/maps/place/100+Manning+Dr,+Chapel+Hill,+NC+27514/@35.905151,-79.0524843,17z/data=!4m5!3m4!1s0x89acc2efa4d7cfa9:0x47ba4eef0885a757!8m2!3d35.9052172!4d-79.0508267?hl=en-US
+        }
+
+        function getLocation() {
+            if ($("#get_geo_location_from_database_button").val() == "Show GPS Location") {
+                $("#get_geo_location_from_database_button").val("Hide GPS Location");
+                $("#get_geo_location_from_database").css("display", "block")
+            } else {
+                $("#get_geo_location_from_database_button").val("Show GPS Location");
+                $("#get_geo_location_from_database").css("display", "none")
+            }
+
+            console.log("getLocation")
+        }
+
+        $(document).ready(function () {
+            // function Show_google_Map() {
+            //     // The location of Uluru
+            //     // 35.9052172,-79.0530154,17
+            //     const uluru = { lat: 36.778259, lng: -119.417931 };
+            //     // The map, centered at Uluru
+            //     const map = new google.maps.Map(document.getElementById("googleMap"), {
+            //         zoom: 4,
+            //         center: uluru,
+            //     });
+            //     // The marker, positioned at Uluru
+            //     const marker = new google.maps.Marker({
+            //         position: uluru,
+            //         map: map,
+            //     });
+            // }
+
+
+
+
+        });
+
     </script>
+
     <style>
         .text-style {
             display: flex;
@@ -1338,7 +1431,16 @@
             margin-left: 80px;
         }
 
-        @media(max-width: 600px) {
+        .save-form-btn {
+            background: #133c55 !important;
+            color: white !important;
+        }
+
+        @media(max-width: 800px) {
+            .save-form-btn {
+                /* width: 25% !important; */
+            }
+
             .discover-image {
                 height: 200px !important;
             }
@@ -1353,7 +1455,6 @@
 <body>
     <div class="container">
         <div>
-            <p id="home_address_text"></p>
             <p id="home_owner_kind_text"></p>
             <!-- <img id="home_discover_image" class="discover-image"> -->
 
@@ -1383,6 +1484,32 @@
                     </a>
                 </div>
             </div>
+
+            <div class="container">
+                <div class="row" style="margin-top: 35px;margin-bottom: 15px;">
+
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <div id="Top_title_home_price"> </div>
+                        <div id="Top_title_home_bed_numbers"> </div>
+                        <div id="home_address_text"> </div>
+                        <div>
+                            <input type='button' name="update" id="get_geo_location_from_database_button"
+                                value='Show GPS Location' class='save-form-btn button' onclick="getLocation()">
+                        </div>
+                        <div id="get_geo_location_from_database" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="col-md-6  col-sm-12 col-12">
+                        <div id="googleMap" style="width:100%;height:200px;"></div>
+                    </div>
+
+                    <div class="col-md-12  col-sm-12 col-12">
+
+                    </div>
+                </div>
+            </div>
+            <hr />
+
 
             <!-- <p>$429,900</p>
             <p>3bed  2bath  2,200sqft  3,920sqft lot</p>
@@ -1444,10 +1571,10 @@
             <hr />
             <div id="Type_TOTAL_REAL_ESTATE_PROPERTY_TAX"></div>
             <hr />
-            <div id="Type_SALE_PRICE"></div>
+            <!-- <div id="Type_SALE_PRICE"></div>
             <hr />
             <div id="Type_LEASE_PRICE"></div>
-            <hr />
+            <hr /> -->
             <div id="Type_LEASE_GROSS_YEARLY_INCOME"></div>
             <hr />
         </div>
@@ -1468,10 +1595,10 @@
             <hr />
             <div id="ADDRESS_COUNTRY"></div>
             <hr />
-            <div id="ADDRESS_GEO_LAT"></div>
+            <!-- <div id="ADDRESS_GEO_LAT"></div>
             <hr />
             <div id="ADDRESS_GEO_LONG"></div>
-            <hr />
+            <hr /> -->
             <div id="ADDRESS_CITY_LIMITS"></div>
             <hr />
             <div id="ADDRESS_HISTORIC_DISTRICT"></div>

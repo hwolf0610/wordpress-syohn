@@ -149,6 +149,7 @@
                     document.getElementById("listin_SELLER_OPT_IN").innerHTML = item.listin_SELLER_OPT_IN;
                     document.getElementById("listin_OUTSIDE_DISTRIBUTION").innerHTML = item.listin_OUTSIDE_DISTRIBUTION;
                     document.getElementById("Instruction_SUBMIT_BUTTON").innerHTML = item.Instruction_SUBMIT_BUTTON;
+                    document.getElementById("ADDRESS_GEO_LONG_GPS_LOCATION_LINK").innerHTML = item.gps_geo_location;
 
                     // document.getElementById("Photo_EXTERIOR").innerHTML = item.Photo_EXTERIOR;
                     // document.getElementById("Photo_INTERIOR").innerHTML = item.Photo_INTERIOR;
@@ -433,6 +434,9 @@
 
                             $("#property_address_geo_long").val(item.property_address_geo_long);
                             document.getElementById('information_checkbox_12_NA_124').checked = item.information_checkbox_12_NA_124 ? true : false;
+
+                            $("#property_address_geo_long_GPS_LOCATION_LIN").val(item.property_address_geo_long_GPS_LOCATION_LIN);
+                            document.getElementById('information_checkbox_12_NA_124_GPS_LOCATION_LIN').checked = item.information_checkbox_12_NA_124_GPS_LOCATION_LIN ? true : false;
 
                             $("#Address_select_2").val(item.property_address_city_limits_1);
                             document.getElementById('information_checkbox_12_NA_126').checked = item.information_checkbox_12_NA_126 ? true : false;
@@ -1696,7 +1700,39 @@
             window.add_more_room++;
         }
 
+        // $(document).ready(function () {
+        //     //    get current GEO Location 
+        //     var property_address_geo_lat = document.getElementById("property_address_geo_lat");
+        //     var property_address_geo_long = document.getElementById("property_address_geo_long");
+        //     if (navigator.geolocation) {
+        //         navigator.geolocation.getCurrentPosition(showPosition, showError);
+        //     } else {
+        //         property_address_geo_lat.innerHTML = "Geolocation is not supported by this browser.";
+        //         property_address_geo_long.innerHTML = "Geolocation is not supported by this browser.";
+        //     }
 
+        //     function showPosition(position) {
+        //         property_address_geo_lat.innerHTML = position.coords.latitude;
+        //         property_address_geo_long.innerHTML = position.coords.longitude;
+        //     }
+
+        //     function showError(error) {
+        //         switch (error.code) {
+        //             case error.PERMISSION_DENIED:
+        //                 x.innerHTML = "User denied the request for Geolocation."
+        //                 break;
+        //             case error.POSITION_UNAVAILABLE:
+        //                 x.innerHTML = "Location information is unavailable."
+        //                 break;
+        //             case error.TIMEOUT:
+        //                 x.innerHTML = "The request to get user location timed out."
+        //                 break;
+        //             case error.UNKNOWN_ERROR:
+        //                 x.innerHTML = "An unknown error occurred."
+        //                 break;
+        //         }
+        //     }
+        // });
 
 
 
@@ -3069,6 +3105,18 @@
                         value="dewey">
                     <label for="information_checkbox_12_NA_124">N/A or Don’t Know</label>
                 </div>
+
+                <h3>GPS LOCATION LINK</h3>
+                <textarea id="ADDRESS_GEO_LONG_GPS_LOCATION_LINK" disabled></textarea>
+                <textarea style="background: rgb(241, 241, 120);color: black;width:100%;height: 80px;"
+                    id="property_address_geo_long_GPS_LOCATION_LIN" name="property_address_geo_long_GPS_LOCATION_LIN" placeholder="GPS LOCATION LINK"></textarea>
+                <!-- <input type="text" style="background: rgb(241, 241, 120);color: black;width:100%;height: 50px;" placeholder="GEO Long"> -->
+                <div class="second-radio">
+                    <input type="checkbox" id="information_checkbox_12_NA_124_GPS_LOCATION_LIN" name="information_checkbox_12_NA_124_GPS_LOCATION_LIN"
+                        value="dewey">
+                    <label for="information_checkbox_12_NA_124_GPS_LOCATION_LIN">N/A or Don’t Know</label>
+                </div>
+
             </div>
 
             <div class="second-radio">

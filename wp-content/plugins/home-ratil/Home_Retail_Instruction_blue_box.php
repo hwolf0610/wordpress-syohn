@@ -193,6 +193,7 @@ function HOME_Upload_Instruction_from(){
         echo "<tr><td>Photo_EXTERIOR</td><td><textarea name='Photo_EXTERIOR'  style='width:100%'>$row->Photo_EXTERIOR</textarea></td></tr>";
         echo "<tr><td>Photo_INTERIOR</td><td><textarea name='Photo_INTERIOR'  style='width:100%'>$row->Photo_INTERIOR</textarea></td></tr>";
         echo "<tr><td>Document_PDF_s</td><td><textarea name='Document_PDF_s'  style='width:100%'>$row->Document_PDF_s</textarea></td></tr>";
+        echo "<tr><td>gps_geo_location</td><td><textarea name='gps_geo_location'  style='width:100%'>$row->gps_geo_location</textarea></td></tr>";
 	echo "</table>";
   }
   ?><input type='submit' name="update" value='Save' class='button'></form><?php
