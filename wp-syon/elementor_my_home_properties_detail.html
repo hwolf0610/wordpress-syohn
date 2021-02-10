@@ -14,7 +14,9 @@
 
     <script type="text/javascript">
         let gps_location = "";
-        
+        let gps_location_link_flag = false;
+        let url_popup = "";
+
         var select_home_id = "";
         var select_home_kind = "";
         var select_home_retail_regex_id = "";
@@ -1268,27 +1270,38 @@
                                 property_address_geo_long_GPS_LOCATION_LIN += item.property_address_geo_long_GPS_LOCATION_LIN ? item.property_address_geo_long_GPS_LOCATION_LIN : "";
                                 if (item.property_address_geo_long_GPS_LOCATION_LIN) {
                                     gps_location += item.property_address_geo_long_GPS_LOCATION_LIN ? item.property_address_geo_long_GPS_LOCATION_LIN : "";
-                                    document.getElementById('get_geo_location_from_database').innerHTML = "<h4>GEO Location</h4><div  style=' word-wrap: break-word;'><a href='" + gps_location + "' target='_blank'>" + gps_location + "</a></div>";
+                                    $("#googleMap").css("display", "none")
+
+                                    gps_location_link_flag = true
+
+
+                                    // document.getElementById('get_geo_location_from_database').innerHTML = "<h4>GEO Location</h4><div  style=' word-wrap: break-word;'><a href='" + gps_location + "' target='_blank'>" + gps_location + "</a><br/><button onclick='show_google_map_new_win()' class='save-form-btn button' >Show Google Map</button></div>";
 
                                     // var str = "https://www.google.com/maps/place/100+Manning+Dr,+Chapel+Hill,+NC+27514/@35.905151,-79.0524843,17z/data=!4m5!3m4!1s0x89acc2efa4d7cfa9:0x47ba4eef0885a757!8m2!3d35.9052172!4d-79.0508267?hl=en-US";
-                                    var str = item.property_address_geo_long_GPS_LOCATION_LIN;
-                                    var res = str.split("@");
-                                    var res_2 = res[1].split("data");
-                                    var res_3 = res_2[0].split(",");
+                                    // var str = item.property_address_geo_long_GPS_LOCATION_LIN;
+                                    // var res = str.split("@");
+                                    // var res_2 = res[1].split("data");
+                                    // var res_3 = res_2[0].split(",");
 
-                                    lat_value = parseInt(res_3[0]);
-                                    long_value = parseInt(res_3[1]);
-                                    draw_google_map(lat_value, long_value);
+                                    // lat_value = parseInt(res_3[0]);
+                                    // long_value = parseInt(res_3[1]);
+                                    // draw_google_map(lat_value, long_value);
                                 } else {
+                                    gps_location_link_flag = false
+
                                     gps_location += item.property_address_geo_lat ? "LAT: " + item.property_address_geo_lat + "<br/>" : "";
                                     gps_location += item.property_address_geo_long ? "LONG: " + item.property_address_geo_long : "";
                                     document.getElementById('get_geo_location_from_database').innerHTML = "<h4>GEO Location</h4><div style=' word-wrap: break-word;'>" + gps_location + "</div>";
 
                                     lat_value = parseInt(item.property_address_geo_lat);
                                     long_value = parseInt(item.property_address_geo_long);
-                                    draw_google_map(lat_value, long_value);
+                                    // draw_google_map(lat_value, long_value);
+                                url_popup = " https://syohn.com/show_google_map/?lat_value=" + lat_value + "&long_value=" + long_value
+                                // https://syohn.com/show_google_map/
                                 }
                             } else {
+                                gps_location_link_flag = false
+
                                 if (!item.information_checkbox_12_NA_123) {
                                     var ADDRESS_GEO_LAT = "";
                                     ADDRESS_GEO_LAT += item.property_address_geo_lat ? item.property_address_geo_lat : "";
@@ -1304,7 +1317,9 @@
 
                                 lat_value = parseInt(item.property_address_geo_lat);
                                 long_value = parseInt(item.property_address_geo_long);
-                                draw_google_map(lat_value, long_value);
+                               // draw_google_map(lat_value, long_value);
+                               url_popup = " https://syohn.com/show_google_map/?lat_value=" + lat_value + "&long_value=" + long_value
+                                // https://syohn.com/show_google_map/
                             }
 
 
@@ -1485,12 +1500,22 @@
         }
 
         function getLocation() {
-            if ($("#get_geo_location_from_database_button").val() == "Show GPS Location") {
-                $("#get_geo_location_from_database_button").val("Hide GPS Location");
-                $("#get_geo_location_from_database").css("display", "block")
+            if (gps_location_link_flag == true) {
+                console.log(gps_location)
+                window.open(gps_location, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
             } else {
-                $("#get_geo_location_from_database_button").val("Show GPS Location");
-                $("#get_geo_location_from_database").css("display", "none")
+                console.log(url_popup)
+                
+                
+                if ($("#get_geo_location_from_database_button").val() == "Show GPS Location") {
+                    $("#get_geo_location_from_database_button").val("Hide GPS Location");
+                    $("#get_geo_location_from_database").css("display", "block")
+                    myWindow = window.open(url_popup, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+                } else {
+                    $("#get_geo_location_from_database_button").val("Show GPS Location");
+                    $("#get_geo_location_from_database").css("display", "none")
+                    myWindow.close();
+                }
             }
 
             console.log("getLocation")

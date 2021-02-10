@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div id="googleMap" style="width:100%;height:400px;"></div>
+
+    <script>
+        var url_string = window.location.href
+        var url = new URL(url_string);
+        var lat_value = parseFloat(url.searchParams.get("lat_value"));
+        var long_value = parseFloat(url.searchParams.get("long_value"));
+
+        function Show_google_Map() {
+            var latlng = new google.maps.LatLng(lat_value, long_value);
+            var geocoder = geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                console.log("result", results, status)
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        // alert("Location: " + results[1].formatted_address);
+                        const uluru = { lat: lat_value, lng: long_value };
+                        // const uluru = { lat: 36.778259, lng: -119.417931 };
+                        // The map, centered at Uluru
+                        const map = new google.maps.Map(document.getElementById("googleMap"), {
+                            zoom: 20,
+                            center: uluru,
+                        });
+                        // The marker, positioned at Uluru
+                        const marker = new google.maps.Marker({
+                            position: uluru,
+                            label: { color: '#00aaff', fontWeight: 'bold', fontSize: '14px', text: results[1].formatted_address },
+                            map: map,
+                            // label: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + lat_value + "<br />Longitude: " + long_value
+                        });
+
+                    }
+                } else {
+                    const uluru = { lat: lat_value, lng: long_value };
+                    // const uluru = { lat: 36.778259, lng: -119.417931 };
+                    // The map, centered at Uluru
+                    const map = new google.maps.Map(document.getElementById("googleMap"), {
+                        zoom: 20,
+                        center: uluru,
+                    });
+                    // The marker, positioned at Uluru
+                    const marker = new google.maps.Marker({
+                        position: uluru,
+                        // label: { color: '#00aaff', fontWeight: 'bold', fontSize: '14px', text: 'Your text here' },
+                        map: map,
+                        // label: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + lat_value + "<br />Longitude: " + long_value
+                    });
+                }
+            });
+        }        
+    </script>
+
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBujnwZRvK9NXQkrKjfED2-WFNRQrbjYTk&callback=Show_google_Map&sensor=true"></script>
+
+
+</body>
+
+</html>
